@@ -65,4 +65,13 @@ class M_login extends CI_model {
 				VALUE(?, ?, ?, ?, ?, ?, ?)";
 		$this->db->query($sql, array($this->pf_fbId_gmId, $this->pf_username, $this->pf_password, $this->pf_fistname, $this->pf_lastname, $this->pf_email, $this->pf_bio));
 	}
+
+	public function get_wordset()	//หน้าแรก
+	{
+		$sql = "SELECT * FROM tpt_competition WHERE cpt_id=2";
+		$query = $this->db->query($sql);
+		return $query;
+		//$query = $this->db->get('tpt_profile');
+        //return $query->result();
+	}
 }

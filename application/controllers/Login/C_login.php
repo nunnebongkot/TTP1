@@ -179,17 +179,19 @@ class C_login extends CI_Controller {
 	
 	public function test_competition()
 	{
+		$this->load->model('M_login', 'wordset');
+		$data['wordset'] = $this->wordset->get_wordset();
 		// echo "test";
 		$this->load->view('Template/header');
-		$this->load->view('Competition/v_competition');
+		$this->load->view('Competition/v_competition', $data);
 		$this->load->view('Template/footer');
 	}
 
-	public function test_competition2()
+	/*public function test_competition2()
 	{
 		// echo "test";
 		$this->load->view('Template/header');
 		$this->load->view('Competition/testkai');
 		$this->load->view('Template/footer');
-	}
+	}*/
 }
