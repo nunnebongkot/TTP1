@@ -23,7 +23,78 @@
 			</nav>
 		</header>
 	  	<!-- Full Width Column -->
-	  	
+
+	  	<div class="content-wrapper">
+		    <div class="container">
+		      <!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>Typing Test</h1>
+				</section>	
+				<!-- Main content -->
+				<section class="content">
+					<div class="box box-default">
+						<div class="box-header with-border">
+							<h3 class="box-title"></h3>
+						</div>
+						<div class="box-body">
+								<div class="row">
+									<div class="col-md-2 col-sm-4 col-xs-6"></div>
+									<!-- /.col -->
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<div class="info-box bg-green">
+											<span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+
+											<div class="info-box-content">
+												<span class="info-box-text">Likes</span>
+												<span class="info-box-number">41,410</span>
+
+												<div class="progress">
+													<div class="progress-bar" style="width: 70%"></div>
+												</div>
+												<span class="progress-description">
+													70% Increase in 30 Days
+												</span>
+											</div>
+											<!-- /.info-box-content -->
+										</div>
+										<!-- /.info-box -->
+									</div>
+									<!-- /.col -->
+									<div class="col-md-1 col-sm-3 col-xs-6"></div>
+									<!-- /.col -->
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<div class="info-box bg-yellow">
+											<span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+
+											<div class="info-box-content">
+												<span class="info-box-text">Events</span>
+												<span class="info-box-number">41,410</span>
+
+												<div class="progress">
+													<div class="progress-bar" style="width: 70%"></div>
+												</div>
+												<span class="progress-description">
+													70% Increase in 30 Days
+												</span>
+											</div>
+											<!-- /.info-box-content -->
+										</div>
+										<!-- /.info-box -->
+									</div>
+									<!-- /.col -->
+									<div class="col-md-2 col-sm-3 col-xs-6"></div>
+									<!-- /.col -->
+								</div>
+							</div>
+						<!-- /.box-body -->
+						</div>
+					</div>
+					<!-- /.box -->
+				</section>
+				<!-- /.content -->
+			</div>
+		</div>
+		
 
 		<footer class="main-footer">
 			<div class="container">

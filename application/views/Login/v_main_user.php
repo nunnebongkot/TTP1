@@ -40,7 +40,7 @@
 				<div class="inner">
 				  <h3>Typing Test</h3>
 
-				  <p>Speed Typing Test</p>
+				  <p>Typing Speed Test</p>
 				</div>
 				<div class="icon">
 				  <i class="ion ion-fireball"></i>
@@ -57,7 +57,7 @@
         <div class="inner">
           <h3>Competition</h3>
 
-          <p>Rank Speed Typing</p>
+          <p>Typing Speed Rank</p>
         </div>
         <div class="icon">
           <i class="ion ion-podium"></i>
