@@ -38,9 +38,9 @@
 			  <!-- small box -->
 			  <div class="small-box bg-red">
 				<div class="inner">
-				  <h3>Fast</h3>
+				  <h3>Speed</h3>
 
-				  <p>Fast Typing</p>
+				  <p>Speed Typing</p>
 				</div>
 				<div class="icon">
 				  <i class="ion ion-pie-graph"></i>
