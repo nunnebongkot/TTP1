@@ -992,9 +992,9 @@ $(document).ready(function(){
 	sentence_count = 0;
 	$("#Key-"+keys_check(word[0][0])).css("background-color", "red");
 	$('#keydata').keyup(function(e){	
-
 		$("#Key-"+keys_check(word[0][0])).css("background-color", "#ecf0f5");
-
+		
+		
 		if(word_count == 0 && sentence_count == 0){
 			$("#Key-"+keys_check(word[0][1])).css("background-color", "red");
 		}
