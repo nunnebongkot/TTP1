@@ -132,39 +132,21 @@ class C_login extends CI_Controller {
 	}
 	public function tutorial_system()
 	{
-		
-		//$this->load->model('M_login', 'login');
-		//$lg = $this->login;
-		
-		//$data['query'] = $lg->get_tutorial_by_id();
-		$this->load->view('Template/headerMain');
-		$this->load->view('Tutorial/v_tutorial');
-		$this->load->view('Template/footerMain');
-	}
-	public function tutorial_system_en($id)
-	{
-		$this->tt_id = $id;
 		$this->load->model('M_login', 'login');
 		$lg = $this->login;
-		$data['i']=1;
-		$data['query'] = $lg->get_tutorial_by_id();
-		$row = $lg->get_tutorial_by_id()->row_array();
-		$data['tt_id'] = $row['tt_id'];
-		$data['tt_word_th'] = $row['tt_word_th'];
-		$data['tt_word_en'] = $row['tt_word_en'];
-		$data['tt_lesson_en'] = $row['tt_lesson_en'];
-		$data['tt_lesson_th'] = $row['tt_lesson_th'];
-		$data['tt_type'] = $row['tt_type'];
-		$this->load->view('Template/headerTu');
+		$data['wordset'] = $lg->get_tutorial();
+		
+		$this->load->view('Template/headerMain');
 		$this->load->view('Tutorial/v_tutorial', $data);
-		$this->load->view('Template/footerTu');
+		$this->load->view('Template/footerMain');
 	}
+
 	
 	public function Lesson_system(){
 		
 		$this->load->model('M_login', 'login');
 		$lg = $this->login;
-		$data['query'] = $lg->get_tutorial();
+		$data['lesson'] = $lg->get_lesson();
 		$this->load->view('Template/headerMain');
 		$this->load->view('Tutorial/v_lesson', $data);
 		$this->load->view('Template/footerMain');

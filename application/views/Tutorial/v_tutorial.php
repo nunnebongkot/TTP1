@@ -71,6 +71,7 @@ textarea{ color: navy;
       <table id="keyboard" class="PCKeyboard" border="1" cellpadding="0" cellspacing="2">
         <tbody>
 		<td colspan="60">
+		    <?php $row = $wordset->row_array(); ?>
 			<div id="sentence"></div>
 			<!--<input type="text" id="keydata" />-->
 			<div id="check"> </div>
@@ -967,7 +968,8 @@ function keys_check(character){
 }
 
 $(document).ready(function(){
-	var sentence = ["nuneee", "kaiimook", "jo", "join", "today", "egg", "ant", "monday", "clean"];
+	var sentence = ["<?php echo str_replace(' ', '","', $row['tt_wordset']); ?>"];
+
 	var sentence_show = '';
 	var sentence_count = 0;
 

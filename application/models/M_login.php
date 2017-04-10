@@ -34,20 +34,17 @@ class M_login extends CI_model {
 	public function get_tutorial()	//หน้าแรก
 	{
 		
-		$sql = "SELECT * FROM tpt_tutorial";
+		$sql = "SELECT * FROM tpt_tutorial WHERE tt_id=1 && tt_language=0 ";
 		$query = $this->db->query($sql);
-		return $query->result();
-		// $query = $this->db->get('tpt_tutorial');
-        // return $query->result();
-	}
-	public function get_tutorial_by_id()	//หน้าแรก
-	{
-		
-		$sql = "SELECT * FROM tpt_tutorial where tt_id = ?";
-		$query = $this->db->query($sql, array($this->tt_id));
 		return $query;
-		// $query = $this->db->get('tpt_tutorial');
-        // return $query->result();
+		
+	}
+
+	public function get_lesson()
+	{
+		$sql = "SELECT * FROM tpt_tutorial LEFT JOIN tpt_log ON tpt_log.lg_tt_id = tpt_tutorial.tt_id";
+		$query = $this->db->query($sql);
+		return $query;
 	}
 	
 	public function get_profile()	//หน้าแรก
