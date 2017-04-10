@@ -191,6 +191,39 @@ class C_login extends CI_Controller {
 		$this->load->view('Competition/v_competition', $data);
 		$this->load->view('Template/footerMain');
 	}
+	public function test_kai($sc_wpm=NULL, $sc_keystroke=NULL, $sc_ckeystroke=NULL, $sc_wkeystroke=NULL, $sc_cword=NULL, $sc_wword=NULL, $sc_pc_id=NULL)
+	{
+		$this->load->model('M_login', 'test');
+		$ok = $this->test; 
+
+		$data['sc_wpm'] = $sc_wpm;
+		$data['sc_keystroke'] = $sc_keystroke; 
+		$data['sc_ckeystroke'] = $sc_ckeystroke;
+		$data['sc_wkeystroke'] = $sc_wkeystroke; 
+		$data['sc_cword'] = $sc_cword;
+		$data['sc_wword'] = $sc_wword; 
+		$data['sc_pc_id'] = $sc_pc_id;
+
+		$this->load->view('Template/headerMain');
+		$this->load->view('Competition/testinsert', $data);
+		$this->load->view('Template/footerMain');
+	}
+	public function insert_score()
+	{
+		$this->load->model('M_login', 'test');
+		$ok = $this->test; 
+		
+		$this->sc_wpm = $this->input->post('sc_wpm');
+		$this->sc_keystroke = $this->input->post('sc_keystroke');
+		$this->sc_ckeystroke = $this->input->post('sc_ckeystroke');
+		$this->sc_wkeystroke = $this->input->post('sc_wkeystroke');
+		$this->sc_cword = $this->input->post('sc_cword');
+		$this->sc_wword = $this->input->post('sc_wword');
+		$this->sc_pc_id = $this->input->post('sc_pc_id');
+		$ok->insert_score();
+		redirect('Login/C_login/test_kai');
+	}
+
 	
 	public function insert_log()
 	{

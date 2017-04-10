@@ -79,6 +79,13 @@ class M_login extends CI_model {
 		//$query = $this->db->get('tpt_profile');
         //return $query->result();
 	}
+
+	public function insert_score()	//หน้าแรก
+	{
+		$sql = "INSERT INTO tpt_score(sc_id, sc_wpm, sc_keystroke, sc_ckeystroke, sc_wkeystroke, sc_cword, sc_wword, sc_pc_id)
+				VALUE(?, ?, ?, ?, ?, ?, ?, ?)";
+		$this->db->query($sql, array($this->sc_id, $this->sc_wpm, $this->sc_keystroke, $this->sc_ckeystroke, $this->sc_wkeystroke, $this->sc_cword, $this->sc_wword, $this->sc_pc_id));
+	}
 	
 	public function insert_log(){
 		$sql = "INSERT INTO tpt_log(lg_id, lg_pf_id, lg_tt_id)
