@@ -86,6 +86,7 @@ class C_login extends CI_Controller {
 		$this->load->view('Template/header2');
 		$this->load->view('Login/v_register',$data);
 		$this->load->view('Template/footer2');
+		
 	}
 	public function insert_regis()
 	{
@@ -188,6 +189,31 @@ class C_login extends CI_Controller {
 		// echo "test";
 		$this->load->view('Template/headerMain');
 		$this->load->view('Competition/v_competition', $data);
+		$this->load->view('Template/footerMain');
+	}
+	
+	public function insert_log()
+	{
+		$this->load->model('M_login', 'login');
+		$lg = $this->login;
+		
+		$this->lg_id = $this->input->post('lg_id');
+		$this->lg_pf_id = $this->input->post('lg_pf_id');
+		$this->lg_tt_id = $this->input->post('lg_tt_id');
+		$lg->insert_log();
+		redirect('Login/C_login/Lesson_system');
+	}
+	
+	public function test($lg_id=NULL, $lg_pf_id=NULL, $lg_tt_id=NULL)
+	{
+		$this->load->model('M_login', 'login');
+		$lg = $this->login;
+		
+		$data['lg_id'] = $lg_id; 
+		$data['lg_pf_id'] = $lg_pf_id;
+		$data['lg_tt_id'] = $lg_tt_id;
+		$this->load->view('Template/headerMain');
+		$this->load->view('Tutorial/v_test', $data);
 		$this->load->view('Template/footerMain');
 	}
 }

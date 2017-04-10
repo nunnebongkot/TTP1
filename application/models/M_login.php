@@ -79,4 +79,10 @@ class M_login extends CI_model {
 		//$query = $this->db->get('tpt_profile');
         //return $query->result();
 	}
+	
+	public function insert_log(){
+		$sql = "INSERT INTO tpt_log(lg_id, lg_pf_id, lg_tt_id)
+				VALUE(?, ?, ?)";
+		$this->db->query($sql, array($this->lg_id, $this->lg_pf_id, $this->lg_tt_id));
+	}
 }
