@@ -153,7 +153,7 @@ class C_login extends CI_Controller {
 		$this->load->view('Template/footerMain');
 	}
 	
-	public function test_speed()
+	public function main_speed()
 	{
 		$this->load->view('Template/headerMain');
 		//$this->load->view('Template/navi_bar');
@@ -182,6 +182,25 @@ class C_login extends CI_Controller {
 		$this->load->view('Template/footerMain');
 	}
 
+	
+	public function main_competition()
+	{
+		$this->load->model('M_login', 'com');
+		// echo "test";
+		$this->load->view('Template/headerMain');
+		$this->load->view('Competition/v_maincom');
+		$this->load->view('Template/footerMain');
+	}
+
+	public function insert_competition()
+	{
+		$this->load->model('M_login', 'com');
+		// echo "test";
+		$this->load->view('Template/headerMain');
+		$this->load->view('Competition/v_insertcom');
+		$this->load->view('Template/footerMain');
+	}
+	
 	public function test_competition()
 	{
 		$this->load->model('M_login', 'wordset');
@@ -191,6 +210,9 @@ class C_login extends CI_Controller {
 		$this->load->view('Competition/v_competition', $data);
 		$this->load->view('Template/footerMain');
 	}
+
+
+
 	public function test_kai($sc_wpm=NULL, $sc_keystroke=NULL, $sc_ckeystroke=NULL, $sc_wkeystroke=NULL, $sc_cword=NULL, $sc_wword=NULL, $sc_pc_id=NULL)
 	{
 		$this->load->model('M_login', 'test');

@@ -45,7 +45,7 @@
 				<div class="icon">
 				  <i class="ion ion-fireball"></i>
 				</div>
-				<a href="<?php echo site_url("Login/C_login/test_speed")?>" class="small-box-footer">
+				<a href="<?php echo site_url("Login/C_login/main_speed")?>" class="small-box-footer">
 				  Start Now <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			  </div>
@@ -62,7 +62,7 @@
         <div class="icon">
           <i class="ion ion-podium"></i>
         </div>
-        <a href="<?php echo site_url("Login/C_login/test_competition")?>" class="small-box-footer">
+        <a href="<?php echo site_url("Login/C_login/main_competition")?>" class="small-box-footer">
           Start Now <i class="fa fa-arrow-circle-right"></i>
         </a>
         </div>
