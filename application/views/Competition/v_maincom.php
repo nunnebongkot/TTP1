@@ -66,7 +66,7 @@
 								<div class="col-md-1 col-sm-3 col-xs-6"></div>
 								<!-- /.col -->
 								<div class="col-md-4 col-sm-6 col-xs-12">
-									<a href="<?php echo site_url("Login/C_login/test_competition")?>">
+									<a href="<?php echo site_url("Login/C_login/join_competition")?>">
 										<div class="info-box bg-yellow">
 										
 											<span class="info-box-icon"><i class="fa fa-group"></i></span>
