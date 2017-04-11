@@ -138,7 +138,7 @@ class C_login extends CI_Controller {
 		$data['wordset'] = $lg->get_tutorial();
 		
 		$this->load->view('Template/headerMain');
-		$this->load->view('Tutorial/v_tutorial', $data);
+		$this->load->view('Tutorial/v_tutorial2', $data);
 		$this->load->view('Template/footerMain');
 	}
 
