@@ -3,7 +3,9 @@
 <style>
 ::selection{background-color:none; color:inherit;}
 
-
+#key-0 {
+	background-color: red;
+}
 
 .cable{height:10px; width:10px; margin:0 60%;}
 .keyboard{
@@ -377,6 +379,7 @@ $(document).ready(function(){
 	}
 	$("#sentence").html(sentence_show);
 
+	/*
 	$('#keydata').keyup(function(e){
 	   	//if(e.keyCode == 8){
 	       // user has pressed backspace
@@ -405,6 +408,152 @@ $(document).ready(function(){
 
 	});
 
-
+	*/
 });
+</script>
+
+<script>
+function keys_check(character){
+	
+	var keys = [];
+		keys[0] = ["~","%"];
+		keys[1] = ["!","+","1","ๅ"];
+		keys[2] = ["@","๑","2","/"];
+		keys[3] = ["#","๒","3","-"];
+		keys[4] = ["$","๓","4","ภ"];
+		keys[5] = ["%","๔","5","ถ"];
+		keys[6] = ["^","อู","6","อุ"];
+		keys[7] = ["&","฿","7","อึ"];
+		keys[8] = ["*","๕","8","ค"];
+		keys[9] = ["(","๖","9","ต"];
+		keys[10] = [")","๗","0","จ"];
+		keys[11] = ["-","๘","-","ข"];
+		keys[12] = ["+","๙","=","ช"];
+		keys[13] = [" "];
+		keys[14] = [" "];
+		keys[15] = ["Q","๐","ๆ"];
+		keys[16] = ["W","","ไ"];
+		keys[17] = ["E","ฎ","อำ"];
+		keys[18] = ["R","ฑ","พ"];
+		keys[19] = ["T","ธ","ะ"];
+		keys[20] = ["Y","ํ","ั"];
+		keys[21] = ["U","๊","ี"];
+		keys[22] = ["I","ณ","ร"];
+		keys[23] = ["O","ฯ","น"];
+		keys[24] = ["P","ญ","ญ"];
+		keys[25] = ["{","ฐ","[","บ"];
+		keys[26] = [" "," "," ","ล"];
+		keys[27] = ["","ฅ","ฃ"];
+		keys[28] = [""];
+		keys[29] = ["A","ฤ","ฟ"];
+		keys[30] = ["S","ฆ","ห"];
+		keys[31] = ["D","ฏ","ก"];
+		keys[32] = ["F","โ","ด"];
+		keys[33] = ["G","ฌ","เ"];
+		keys[34] = ["H","็","้"];
+		keys[35] = ["J","๋","่"];
+		keys[36] = ["K","ษ","า"];
+		keys[37] = ["L","ศ","ส"];
+		keys[38] = [":","ซ",";","ว"];
+		keys[39] = [" ",".","ง"];
+		keys[40] = [""];
+		keys[41] = ["Z", " ","ผ"];
+		keys[42] = ["X", " ","ป"];
+		keys[43] = ["C", "ฉ","แ"];
+		keys[44] = ["V", "ฮ","อ"];
+		keys[45] = ["B", "ฺ","ิ"];
+		keys[46] = ["n", "์","ื"];
+		keys[47] = ["M", " ","ท"];
+		keys[48] = [" ", " ", "ฒ", "ม"];
+		keys[49] = [" ", " ", "ฬ", "ใ"];
+		keys[50] = [" ", " ", "ฦ", "ฝ"];
+		keys[51]	= [""];
+	//console.log("string");
+	for(var i=0;i<keys.length;i++){
+			//console.log(key[i]);
+		for(var j=0;j<keys[i].length;j++){
+			
+			if(character.toLowerCase() == keys[i][j].toLowerCase()){
+				console.log(character+" = "+keys[i][j] + " : " + i);
+				return i;
+				
+			}
+		}	
+	}
+}
+
+$(document).ready(function(){
+	var sentence = ["<?php echo str_replace(' ', '","', $row['tt_wordset']); ?>"];
+
+	var sentence_show = '';
+	var sentence_count = 0;
+
+	//show sentence
+	for(var i=0;i<sentence.length;i++){
+		sentence_show = sentence_show+"<span id='sentence_" + i + "'>"+sentence[i]+ "</span>" + " ";
+	}
+	$("#sentence").html(sentence_show);
+		//console.log(sentence_show);
+		
+	//----------------------------------------------แยกตัวอักษร
+	var word = [];
+	var word_count = 0;
+    var keyid = 0;
+	for(var i=0;i<sentence.length;i++){
+		word[i] = sentence[i].split("");
+		console.log(word[i]);
+	}
+	
+	
+	word_count = 1;
+	sentence_count = 0;
+	$("#key-"+keys_check(word[0][0])).css("background-color", "red");
+	
+	$('#keydata').keyup(function(e){	
+		console.log("Keypress");
+		$("#key-"+keys_check(word[0][0])).css("background-color", "");
+
+		if(word_count == 0 && sentence_count == 0){
+			$("#key-"+keys_check(word[0][1])).css("background-color", "red");
+		}
+		
+		$("#key-" + keyid).css("background-color", "");
+		
+		keyid = keys_check(word[sentence_count][word_count]);
+		$("#key-" + keyid).css("background-color", "red");
+		
+		console.log(word[sentence_count][word_count] +" == " + $("#keydata").val().slice(-1));
+		//if(e.keyCode != 32){
+			word_count++;
+		//}
+		
+		if(word_count == word[sentence_count].length){
+			word_count = 0;
+		}
+		
+		if(e.keyCode == 32){
+	       // user has pressed space
+
+			/*
+			var ans = $("#keydata").val();
+			
+
+			if(ans.split(' ').join('') === sentence[count]){
+				$("#sentence_" + count).css("background-color", "green");
+				sentence_count++;
+			}else{
+				
+				$("#sentence_" + count).css("background-color", "red");
+			}
+
+			$("#keydata").val("");
+			*/
+	   	}
+		
+	});
+		
+});
+
+
+
 </script>
