@@ -1,7 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-	var sentence = ["ฟหกด่าสว", "ฟหกด่าสว", "ฟหกด่าสว"];
+	var sentence = ["asdfkl;", "asdfkl;", "asdfkl;"];
 	var sentence_show = '';
 	var count = 0;
 
@@ -68,7 +68,6 @@ $(document).ready(function(){
 }
 
 
-
 .lights span{margin:0 20px 0 20px; padding:0; text-align: center;}
 .lights span:after{
   content:"";
@@ -117,7 +116,10 @@ $(document).ready(function(){
 .arrows .key{text-align: center; padding-left: 7px; margin-left:2px;}
 .hidden{visibility: hidden;}
 
-.key:hover{box-shadow:0px 0px 10px #14B524; z-index:1000;}
+.key:hover{box-shadow:0px 0px 20px #000; z-index:1000 }
+
+.label{ background-color: red;}
+
 </style>
 
 
@@ -162,6 +164,7 @@ $(document).ready(function(){
 	 
 		<br/> <br/>
 	<center>
+		<?php //$row = $wordset->row_array(); ?>
 		<div id="sentence" ></div>
 	</center>
 	<!--<input type="text" id="keydata" />-->
@@ -184,146 +187,148 @@ $(document).ready(function(){
 
 		<div class="keyboard">
 		  <div class="section-a">
-			  <div class="key num dual">
-				~&nbsp;%<br>`&nbsp;&nbsp;&nbsp;-
+			  <div class="key num dual" id="key-0">
+				<td class="label">
+					~&nbsp;%<br>`&nbsp;&nbsp;&nbsp;-
+				</td>
 			  </div>
 				
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-1">
 				!&nbsp;&nbsp;&nbsp;+<br>1&nbsp;&nbsp;ๅ
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-2">
 				@&nbsp;๑<br>2&nbsp;&nbsp;&nbsp;/
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-3">
 				#&nbsp;&nbsp;๒<br>3&nbsp;&nbsp;&nbsp;-
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-4">
 				$&nbsp;&nbsp;๓<br>4&nbsp;&nbsp;ภ
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-5">
 				%&nbsp;๔<br>5&nbsp;&nbsp;ถ
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-6">
 				^&nbsp;&nbsp;&nbsp;  ู<br>6&nbsp;&nbsp;&nbsp;  ุ
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-7">
 				&&nbsp;&nbsp;฿<br>7&nbsp;&nbsp;&nbsp;&nbsp;   ึ
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-8">
 				*&nbsp;&nbsp;๕<br>8&nbsp;&nbsp;ค
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-9">
 				(&nbsp;&nbsp;๖<br>9&nbsp;&nbsp;ต
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-10">
 				)&nbsp;&nbsp;๗<br>0&nbsp;&nbsp;จ
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-11">
 				_&nbsp;&nbsp;๘<br>-&nbsp;&nbsp;&nbsp;ข
 			  </div>
-			  <div class="key num dual">
+			  <div class="key num dual" id="key-12">
 				+&nbsp;&nbsp;๙<br>=&nbsp;&nbsp;ช
 			  </div>
-			  <div class="key backspace">
+			  <div class="key backspace" id="key-13">
 				  Backspace
 			  </div>
 			   <!--END NUMBER KEYS -->
 				<BR><BR>
-			  <div class="key tab">
+			  <div class="key tab" id="key-14">
 				Tab
 			  </div>
 			  
-			  <div class="key dual">
+			  <div class="key dual" id="key-15">
 				Q&nbsp;        ๐<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ๆ
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-16">
 				W&nbsp;&nbsp;"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ไ
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-17">
 				E&nbsp;&nbsp;ฎ<BR>&nbsp;&nbsp;&nbsp;&nbsp;ำ
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-18">
 				R&nbsp;&nbsp;ฑ
 				<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;พ
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-19">
 				T&nbsp;&nbsp;ธ<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ะ
 			  </div>
-				<div class="key dual">
-			   Y&nbsp;&nbsp;&nbsp;&nbsp;ํ<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ั
+				<div class="key dual" id="key-20">
+			    Y&nbsp;&nbsp;&nbsp;&nbsp;ํ<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ั
 			  </div>
-				<div class="key dual">
-			   U&nbsp;&nbsp;&nbsp;&nbsp;๊
+				<div class="key dual" id="key-21">
+			    U&nbsp;&nbsp;&nbsp;&nbsp;๊
 				<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ี
 			  </div>
-				 <div class="key dual">
-			   I&nbsp;&nbsp;&nbsp;ณ
+				 <div class="key dual" id="key-22">
+			    I&nbsp;&nbsp;&nbsp;ณ
 				<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ร
 			  </div>
-				 <div class="key dual">
-			   O&nbsp;&nbsp;ฯ
+				 <div class="key dual" id="key-23">
+			    O&nbsp;&nbsp;ฯ
 				<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;น
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-24">
 			   P&nbsp;&nbsp;ญ
 				<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ย
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-25">
 				{&nbsp;&nbsp;&nbsp;ฐ<Br>[
 				&nbsp;&nbsp;บ<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-26">
 				}&nbsp;&nbsp;&nbsp;&nbsp;,<br>]
 				&nbsp;&nbsp;&nbsp;ถ<br> 
 			  </div>
-				<div class="key letter dual slash">
+				<div class="key letter dual slash" id="key-27">
 				|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ฅ<br>\
 				&nbsp;&nbsp;&nbsp;&nbsp;ฃ<br> 
 			  </div>
-			  <div class="key caps">
+			  <div class="key caps" id="key-28">
 				Caps<br>Lock
 				</div>
-			   <div class="key dual">
+			   <div class="key dual" id="key-29">
 				A&nbsp;&nbsp;ฤ
 				&nbsp;&nbsp;&nbsp;&nbsp;ถ<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-30">
 				S&nbsp;&nbsp;ฆ
 				&nbsp;&nbsp;&nbsp;&nbsp;ห<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-31">
 				D&nbsp;&nbsp;ฏ
 				&nbsp;&nbsp;&nbsp;&nbsp;ก<br> 
 			  </div>
-			 <div class="key dual">
+			 <div class="key dual" id="key-32">
 				F&nbsp;&nbsp;โ
 				&nbsp;&nbsp;&nbsp;&nbsp;ด<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-33">
 				G&nbsp;ฌ
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เ<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-34">
 				H&nbsp;&nbsp;&nbsp;&nbsp;็
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;้<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-35">
 			   J&nbsp;&nbsp;&nbsp;&nbsp;๋
 				&nbsp;&nbsp;&nbsp;&nbsp;่<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-36">
 				K&nbsp;&nbsp;ษ
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;า<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-37">
 				L&nbsp;&nbsp;&nbsp;ศ
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ส<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-38">
 				:&nbsp;&nbsp;&nbsp;ซ<br>;
 				&nbsp;&nbsp;&nbsp;ว
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-39">
 				"&nbsp;&nbsp;&nbsp;.<br>'
 				&nbsp;&nbsp;&nbsp;ง
 			  </div>
@@ -331,47 +336,47 @@ $(document).ready(function(){
 				Enter
 			  </div>
 				
-			  <div class="key shift left">
+			  <div class="key shift left" id="key-40">
 				Shift
 			  </div>
-			  <div class="key dual">
+			  <div class="key dual" id="key-41">
 				Z&nbsp;&nbsp;&nbsp;(
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ผ<br> 
 			  </div>  
-				<div class="key dual">
+				<div class="key dual" id="key-42">
 				X&nbsp;&nbsp;&nbsp;)
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ป<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-43">
 				C&nbsp;&nbsp;ฉ
 				&nbsp;&nbsp;&nbsp;&nbsp;แ<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-44">
 				V&nbsp;&nbsp;ฮ
 				&nbsp;&nbsp;&nbsp;&nbsp;อ<br> 
 			  </div>
-			   <div class="key dual">
+			   <div class="key dual" id="key-45">
 				B&nbsp;&nbsp;&nbsp;&nbsp;ฺ
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ิ<br> 
 			  </div>
-			   <div class="key dual">
+			   <div class="key dual" id="key-46">
 				N&nbsp;&nbsp;&nbsp;&nbsp;์
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ื<br> 
 			  </div>
-			  <div class="key dual">
+			  <div class="key dual" id="key-47">
 				M&nbsp;&nbsp;?
 				&nbsp;&nbsp;&nbsp;&nbsp;ท<br> 
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-48">
 				<  ฒ<br>,&nbsp;&nbsp;&nbsp;ม
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-49">
 				>&nbsp;&nbsp;ฬ<br>.&nbsp;&nbsp;&nbsp;&nbsp;ใ
 			  </div>
-				<div class="key dual">
+				<div class="key dual" id="key-50">
 				?&nbsp;&nbsp;ฦ<br>/&nbsp;&nbsp;&nbsp;ฝ
 			  </div>
-				<div class="key shift right">
+				<div class="key shift right" id="key-51">
 				Shift
 			  </div>
 			  <div class="key ctrl">
@@ -404,3 +409,122 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
+
+<script>
+function keys_check(character){
+	
+	var keys = [];
+		keys[0] = ["~","%"];
+		keys[1] = ["!","+","1","ๅ"];
+		keys[2] = ["@","๑","2","/"];
+		keys[3] = ["#","๒","3","-"];
+		keys[4] = ["$","๓","4","ภ"];
+		keys[5] = ["%","๔","5","ถ"];
+		keys[6] = ["^","อู","6","อุ"];
+		keys[7] = ["&","฿","7","อึ"];
+		keys[8] = ["*","๕","8","ค"];
+		keys[9] = ["(","๖","9","ต"];
+		keys[10] = [")","๗","0","จ"];
+		keys[11] = ["-","๘","-","ข"];
+		keys[12] = ["+","๙","=","ช"];
+		keys[13] = [" "];
+		keys[14] = [" "];
+		keys[15] = ["Q","๐","ๆ"];
+		keys[16] = ["W","","ไ"];
+		keys[17] = ["E","ฎ","อำ"];
+		keys[18] = ["R","ฑ","พ"];
+		keys[19] = ["T","ธ","ะ"];
+		keys[20] = ["Y","ํ","ั"];
+		keys[21] = ["U","๊","ี"];
+		keys[22] = ["I","ณ","ร"];
+		keys[23] = ["O","ฯ","น"];
+		keys[24] = ["P","ญ","ญ"];
+		keys[25] = ["{","ฐ","[","บ"];
+		keys[26] = [" "," "," ","ล"];
+		keys[27] = ["","ฅ","ฃ"];
+		keys[28] = [""];
+		keys[29] = ["A","ฤ","ฟ"];
+		keys[30] = ["S","ฆ","ห"];
+		keys[31] = ["D","ฏ","ก"];
+		keys[32] = ["F","โ","ด"];
+		keys[33] = ["G","ฌ","เ"];
+		keys[34] = ["H","็","้"];
+		keys[35] = ["J","๋","่"];
+		keys[36] = ["K","ษ","า"];
+		keys[37] = ["L","ศ","ส"];
+		keys[38] = [":","ซ",";","ว"];
+		keys[39] = [" ",".","ง"];
+		keys[40] = [""];
+		keys[41] = ["Z", " ","ผ"];
+		keys[42] = ["X", " ","ป"];
+		keys[43] = ["C", "ฉ","แ"];
+		keys[44] = ["V", "ฮ","อ"];
+		keys[45] = ["B", "ฺ","ิ"];
+		keys[46] = ["n", "์","ื"];
+		keys[47] = ["M", " ","ท"];
+		keys[48] = [" ", " ", "ฒ", "ม"];
+		keys[49] = [" ", " ", "ฬ", "ใ"];
+		keys[50] = [" ", " ", "ฦ", "ฝ"];
+		keys[51]	= [""];
+	//console.log("string");
+	for(var i=0;i<keys.length;i++){
+			//console.log(key[i]);
+		for(var j=0;j<keys[i].length;j++){
+			
+			if(character.toLowerCase() == keys[i][j].toLowerCase()){
+				//console.log(character+" = "+keys[i][j]);
+				return i;
+				
+			}
+		}	
+	}
+}
+
+$(document).ready(function(){
+	//var sentence = ["<?php echo str_replace(' ', '","', $row['tt_wordset']); ?>"];
+	var sentence = ["asdfkl;", "asdfkl;", "asdfkl;"];
+	var sentence_show = '';
+	var sentence_count = 0;
+
+	//show sentence
+	for(var i=0;i<sentence.length;i++){
+		sentence_show = sentence_show+"<span id='sentence_" + i + "'>"+sentence[i]+ "</span>" + " ";
+	}
+	$("#sentence").html(sentence_show);
+		//console.log(sentence_show);
+		
+	//----------------------------------------------แยกตัวอักษร
+	var word = [];
+	var word_count = 0;
+    var keyid = 0;
+	for(var i=0;i<sentence.length;i++){
+		word[i] = sentence[i].split("");
+		//console.log(word[i]);
+	}
+	
+	
+	word_count = 1;
+	sentence_count = 0;
+	$("#Key-"+keys_check(word[0][0])).css("background-color", "red");
+	$('#keydata').keyup(function(e){	
+
+		$("#Key-"+keys_check(word[0][0])).css("background-color", "#ecf0f5");
+
+		if(word_count == 0 && sentence_count == 0){
+			$("#Key-"+keys_check(word[0][1])).css("background-color", "red");
+		}
+		
+		$("#Key-" + keyid).css("background-color", "#ecf0f5");
+			keyid = keys_check(word[sentence_count][word_count]);
+		$("#Key-" + keyid).css("background-color", "red");
+		word_count++;
+		if(word_count == word[sentence_count].length){
+			word_count = 0;
+			sentence_count++;
+		}
+		
+	});
+		
+});
+
+</script>
