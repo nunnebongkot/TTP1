@@ -48,9 +48,9 @@
 					
 					<?php foreach($lesson->result() as $item) {?>
 						<?php if($item->tt_language=='0'){ ?>
-							<?php if($item->lg_pf_id == NULL) { ?>
+							<?php //if($item->lg_pf_id == NULL) { ?>
 								<a href="<?php echo site_url("Login/C_login/Tutorial_system")?>">
-							<?php } ?>
+							<?php //} ?>
                         <?php echo "บทที่่ ".$item->tt_id." แป้น ".$item->tt_lesson;?>
 						<BR>
                       </a>
@@ -91,11 +91,15 @@
                   <div class="box-header with-border">
                     <h4 class="box-title">
 					
-					<?php //foreach($lesson as $item) if($item->tt_language=='1'){?>
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
-                        <?php //echo "บทที่่ ".$item->tt_id." แป้น ".$item->tt_lesson;?>
+					<?php foreach($lesson->result() as $item) {?>
+						<?php if($item->tt_language=='1'){ ?>
+							<?php //if($item->lg_pf_id == NULL) { ?>
+								<a href="<?php echo site_url("Login/C_login/Tutorial_system")?>">
+							<?php //} ?>
+                        <?php echo "บทที่่ ".$item->tt_id." แป้น ".$item->tt_lesson;?>
+						<BR>
                       </a>
-					<?php// };?>
+					<?php }}?>
 				
                     </h4>
                   </div>
