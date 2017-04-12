@@ -13,7 +13,7 @@
 						<ul class="nav navbar-nav">
 							<li><a href="<?php echo site_url("Login/C_login/lesson_system")?>">Tutorial Typing<span class="sr-only">(current)</span></a></li>
 							<li><a href="<?php echo site_url("Login/C_login/test_speed")?>">Typing Test</a></li>
-							<li class="active"><a href="<?php echo site_url("Login/C_login/test_competition")?>">Competition</a></li>
+							<li class="active"><a href="<?php echo site_url("Login/C_login/main_competition")?>">Competition</a></li>
 						</ul>
 					</div>
 					<!-- /.navbar-custom-menu -->
@@ -36,7 +36,39 @@
 						</div>
 						<div class="box-body">
 							<div class="row">
+								<div class="col-md-3"></div>
+								<div class="col-md-6">
+									<?php
+										//$data['form'] = "insert_com";
+										echo form_open("Login/C_login/insert_com");
+									?>
+					                <!-- text input -->
+						                <div class="form-group">
+						                	<label>Title</label>
+						                	<input type="text" class="form-control" name="cpt_title" placeholder="Enter ...">
+						                </div>
+						                <!-- textarea -->
+						                <div class="form-group">
+						                	<label>Word</label>
+						                	<textarea class="form-control" name="cpt_wordset" rows="5" placeholder="Enter ..."></textarea>
+						                </div>
 
+						                <!-- select -->
+						                <div class="form-group">
+						                	<label>Language</label>
+						                	<select class="form-control" name="cpt_language">
+							                    <option value="0">English</option>
+							                    <option value="1">ภาษาไทย</option>
+						                	</select>
+						                </div>
+
+										<div class="form-group">
+						                	<input type="submit" value="Submit">
+						                </div>
+					              	<?php
+										echo form_close();
+									?>
+					            </div>
 							</div>
 						<!-- /.box-body -->
 						</div>

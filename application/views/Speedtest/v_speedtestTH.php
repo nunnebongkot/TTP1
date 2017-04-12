@@ -101,7 +101,7 @@ $(document).ready(function(){
 				$("#sentence_" + count).css("color", "red");
 			}
 					
-			$("#sentence_" + count).css("background-color", "white");
+			$("#sentence_" + count).css("background-color", "");
 			$("#keydata").val("");
 			count++;
 	   	}

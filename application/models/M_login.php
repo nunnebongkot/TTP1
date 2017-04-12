@@ -80,7 +80,21 @@ class M_login extends CI_model {
         //return $query->result();
 	}
 
-	public function insert_score()	//หน้าแรก
+	public function insert_competition($data)
+	{
+		$sql = "INSERT INTO tpt_competition(cpt_title, cpt_wordset, cpt_language) VALUE(?, ?, ?)";
+		$this->db->query($sql, array($data['cpt_title'], $data['cpt_wordset'], $data['cpt_language']));
+	}
+	public function get_competition()
+	{
+		$sql = "SELECT *, COUNT(lc_pf_id) as par FROM tpt_competition LEFT JOIN logcom ON logcom.lc_cpt_id = tpt_competition.cpt_id GROUP BY cpt_id";
+		$query = $this->db->query($sql);
+		return $query;
+		//$query = $this->db->get('tpt_profile');
+        //return $query->result();
+	}
+
+	public function insert_score()
 	{
 		$sql = "INSERT INTO tpt_score(sc_id, sc_wpm, sc_keystroke, sc_ckeystroke, sc_wkeystroke, sc_cword, sc_wword, sc_pc_id)
 				VALUE(?, ?, ?, ?, ?, ?, ?, ?)";

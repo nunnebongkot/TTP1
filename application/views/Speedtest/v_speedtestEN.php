@@ -101,7 +101,7 @@ $(document).ready(function(){
 				$("#sentence_" + count).css("color", "red");
 			}
 					
-			$("#sentence_" + count).css("background-color", "white");
+			$("#sentence_" + count).css("background-color", "");
 			$("#keydata").val("");
 			count++;
 	   	}
@@ -177,7 +177,7 @@ $(document).ready(function(){
 			if(time <= 0) {
 				clearInterval(x);
 				$("#keydata").val("");
-				document.getElementById("countdown").innerHTML = "หมดเวลาละ ";
+				document.getElementById("countdown").innerHTML = "Time Out !";
 				document.getElementById("keydata").style.display = "none";
 			}
 		}

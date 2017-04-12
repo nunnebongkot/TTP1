@@ -182,7 +182,6 @@ class C_login extends CI_Controller {
 	}
 
 
-	
 	public function main_competition()
 	{
 		$this->load->model('M_login', 'com');
@@ -191,21 +190,36 @@ class C_login extends CI_Controller {
 		$this->load->view('Competition/v_maincom');
 		$this->load->view('Template/footerMain');
 	}
-
 	public function insert_competition()
 	{
-		$this->load->model('M_login', 'com');
-		// echo "test";
 		$this->load->view('Template/headerMain');
 		$this->load->view('Competition/v_insertcom');
 		$this->load->view('Template/footerMain');
 	}
+	public function insert_com()
+	{
+		$this->load->model('M_login', 'com');
+
+		// echo "test";
+		$data['cpt_title'] = $this->input->post('cpt_title');
+		$data['cpt_wordset'] = $this->input->post('cpt_wordset'); 
+		$data['cpt_language'] = $this->input->post('cpt_language');
+
+		//echo $this->input->post('cpt_title');
+		//echo $this->input->post('cpt_wordset');
+		//echo $this->input->post('cpt_language');
+
+		$this->com->insert_competition($data);
+		redirect('Login/C_login/join_competition');
+	}
 	public function join_competition()
 	{
 		$this->load->model('M_login', 'com');
+		$data['com'] = $this->com->get_competition();
+
 		// echo "test";
 		$this->load->view('Template/headerMain');
-		$this->load->view('Competition/v_join');
+		$this->load->view('Competition/v_join', $data);
 		$this->load->view('Template/footerMain');
 	}
 	public function test_competition()
