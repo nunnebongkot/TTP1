@@ -12,7 +12,7 @@
 					<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 						<ul class="nav navbar-nav">
 							<li><a href="<?php echo site_url("Login/C_login/lesson_system")?>">Tutorial Typing<span class="sr-only">(current)</span></a></li>
-							<li><a href="<?php echo site_url("Login/C_login/test_speed")?>">Typing Test</a></li>
+							<li><a href="<?php echo site_url("Login/C_login/main_speed")?>">Typing Test</a></li>
 							<li class="active"><a href="<?php echo site_url("Login/C_login/main_competition")?>">Competition</a></li>
 						</ul>
 					</div>
