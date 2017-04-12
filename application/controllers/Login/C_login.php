@@ -153,22 +153,11 @@ class C_login extends CI_Controller {
 		$this->load->view('Template/footerMain');
 	}
 	
-	public function test_speed()
+	public function main_speed()
 	{
 		$this->load->view('Template/headerMain');
 		//$this->load->view('Template/navi_bar');
 		$this->load->view('Speedtest/v_speedtest');
-		$this->load->view('Template/footerMain');
-	}
-
-	public function test_speedTH()
-	{
-		$this->load->model('M_login', 'wordset');
-		$data['wordset'] = $this->wordset->get_wordsetTH();
-		// echo "test";
-		$this->load->view('Template/headerMain');
-		//$this->load->view('Template/navi_bar');
-		$this->load->view('Speedtest/v_speedtest', $data);
 		$this->load->view('Template/footerMain');
 	}
 	public function test_speedEN()
@@ -178,10 +167,47 @@ class C_login extends CI_Controller {
 		// echo "test";
 		$this->load->view('Template/headerMain');
 		//$this->load->view('Template/navi_bar');
-		$this->load->view('Speedtest/v_speedtest', $data);
+		$this->load->view('Speedtest/v_speedtestEN', $data);
+		$this->load->view('Template/footerMain');
+	}
+	public function test_speedTH()
+	{
+		$this->load->model('M_login', 'wordset');
+		$data['wordset'] = $this->wordset->get_wordsetTH();
+		// echo "test";
+		$this->load->view('Template/headerMain');
+		//$this->load->view('Template/navi_bar');
+		$this->load->view('Speedtest/v_speedtestTH', $data);
 		$this->load->view('Template/footerMain');
 	}
 
+
+	
+	public function main_competition()
+	{
+		$this->load->model('M_login', 'com');
+		// echo "test";
+		$this->load->view('Template/headerMain');
+		$this->load->view('Competition/v_maincom');
+		$this->load->view('Template/footerMain');
+	}
+
+	public function insert_competition()
+	{
+		$this->load->model('M_login', 'com');
+		// echo "test";
+		$this->load->view('Template/headerMain');
+		$this->load->view('Competition/v_insertcom');
+		$this->load->view('Template/footerMain');
+	}
+	public function join_competition()
+	{
+		$this->load->model('M_login', 'com');
+		// echo "test";
+		$this->load->view('Template/headerMain');
+		$this->load->view('Competition/v_join');
+		$this->load->view('Template/footerMain');
+	}
 	public function test_competition()
 	{
 		$this->load->model('M_login', 'wordset');
@@ -191,6 +217,9 @@ class C_login extends CI_Controller {
 		$this->load->view('Competition/v_competition', $data);
 		$this->load->view('Template/footerMain');
 	}
+
+
+
 	public function test_kai($sc_wpm=NULL, $sc_keystroke=NULL, $sc_ckeystroke=NULL, $sc_wkeystroke=NULL, $sc_cword=NULL, $sc_wword=NULL, $sc_pc_id=NULL)
 	{
 		$this->load->model('M_login', 'test');

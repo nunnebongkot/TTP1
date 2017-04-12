@@ -13,8 +13,8 @@
 					<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 						<ul class="nav navbar-nav">
 							<li><a href="<?php echo site_url("Login/C_login/lesson_system")?>">Tutorial Typing<span class="sr-only">(current)</span></a></li>
-							<li class="active"><a href="<?php echo site_url("Login/C_login/test_speed")?>">Typing Test</a></li>
-							<li><a href="<?php echo site_url("Login/C_login/test_competition")?>">Competition</a></li>
+							<li class="active"><a href="<?php echo site_url("Login/C_login/main_speed")?>">Typing Test</a></li>
+							<li><a href="<?php echo site_url("Login/C_login/main_competition")?>">Competition</a></li>
 						</ul>
 					</div>
 					<!-- /.navbar-custom-menu -->
@@ -38,47 +38,53 @@
 						</div>
 						<div class="box-body">
 								<div class="row">
-									<div class="col-md-2 col-sm-4 col-xs-6"></div>
+									<div class="col-md-2 col-sm-4 col-xs-6">
+										<img src="https://static.wixstatic.com/media/806e4f_81f745fcd7ca4d30a7103fac3f7d3554~mv2.png/v1/fill/w_61,h_45,al_c,usm_0.66_1.00_0.01/806e4f_81f745fcd7ca4d30a7103fac3f7d3554~mv2.png" style="width: 60px; height: 55px; object-fit: cover;"></div>
+									</div>
 									<!-- /.col -->
 									<div class="col-md-4 col-sm-6 col-xs-12">
-										<div class="info-box bg-green">
-											<span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
+										<a href="<?php echo site_url("Login/C_login/test_speedEN")?>">
+											<div class="info-box bg-green">
+												<span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
 
-											<div class="info-box-content">
-												<span class="info-box-text">Likes</span>
-												<span class="info-box-number">41,410</span>
+												<div class="info-box-content">
+													<span class="info-box-text"></span>
+													<span class="info-box-number">English</span>
 
-												<div class="progress">
-													<div class="progress-bar" style="width: 70%"></div>
+													<div class="progress">
+														<div class="progress-bar" style="width: 100%"></div>
+													</div>
+													<span class="progress-description">
+														Speed typing test in English
+													</span>
 												</div>
-												<span class="progress-description">
-													70% Increase in 30 Days
-												</span>
+												<!-- /.info-box-content -->
 											</div>
-											<!-- /.info-box-content -->
-										</div>
+										</a>
 										<!-- /.info-box -->
 									</div>
 									<!-- /.col -->
 									<div class="col-md-1 col-sm-3 col-xs-6"></div>
 									<!-- /.col -->
 									<div class="col-md-4 col-sm-6 col-xs-12">
-										<div class="info-box bg-yellow">
-											<span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+										<a href="<?php echo site_url("Login/C_login/test_speedTH")?>">
+											<div class="info-box bg-yellow">
+												<span class="info-box-icon"><i class="fa fa-calendar"></i></span>
 
-											<div class="info-box-content">
-												<span class="info-box-text">Events</span>
-												<span class="info-box-number">41,410</span>
+												<div class="info-box-content">
+													<span class="info-box-text"></span>
+													<span class="info-box-number">Thai</span>
 
-												<div class="progress">
-													<div class="progress-bar" style="width: 70%"></div>
+													<div class="progress">
+														<div class="progress-bar" style="width: 100%"></div>
+													</div>
+													<span class="progress-description">
+														ทดสอบพิมพ์เร็วภาษาไทย
+													</span>
 												</div>
-												<span class="progress-description">
-													70% Increase in 30 Days
-												</span>
+												<!-- /.info-box-content -->
 											</div>
-											<!-- /.info-box-content -->
-										</div>
+										</a>
 										<!-- /.info-box -->
 									</div>
 									<!-- /.col -->
