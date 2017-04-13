@@ -26,17 +26,37 @@
 		    <div class="container">
 		      <!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h1>Welcome to Typing.com!</h1>
+					<h1>All Games</h1>
 				</section>
 
 				<section class="content">
 					<div class="box box-default">
-						<div class="box-header with-border">
-							<h3 class="box-title"></h3>
-						</div>
 						<div class="box-body">
-							<div class="row">
-
+							<div class="box">
+								<!-- /.box-header -->
+								<div class="box-body no-padding">
+									<table class="table table-striped">
+										<tbody>
+											<tr>
+												<th><center>Title</center></th>
+												<th></th>
+												<th><center>Language</center></th>
+												<th><center>Participants</center></th>
+												<th><center>Tests taken</center></th>
+											</tr>
+											<?php foreach($com->result() as $row) { ?>
+												<tr>
+													<td><?php echo $row->cpt_title; ?></td>
+													<td><center><input type="submit" value="Join"></center></td>
+													<td><center><?php echo $row->cpt_language; ?></center></td>
+													<td><center>xxx</center></td>
+													<td><center>xxx</center></td>
+												</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+							<!-- /.box-body -->
 							</div>
 						<!-- /.box-body -->
 						</div>
