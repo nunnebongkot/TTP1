@@ -6,6 +6,7 @@ class C_login extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->helper('form');
+		$this->load->library('session');
 		
 	}
 	public function index()	//หน้าแรก
@@ -28,6 +29,8 @@ class C_login extends CI_Controller {
 		$lg = $this->login;
 		
 		$this->pf_id = $id;
+		$this->session->set_userdata("pf_id", $id);
+		
 		$row = $lg->get_profile_by_id()->row_array();
 		// echo $row['pf_id']."=>".$row['pf_fistname'];die;
 		$data['pf_id'] = $row['pf_id'];
@@ -39,6 +42,7 @@ class C_login extends CI_Controller {
 		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Login/v_main_user', $data);
 		$this->load->view('Template/footerMain');
+		
 	}
 	
 	public function check_login()
@@ -135,9 +139,20 @@ class C_login extends CI_Controller {
 	{
 		$this->load->model('M_login', 'login');
 		$lg = $this->login;
-		$data['wordset'] = $lg->get_tutorial();
 		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $lg->get_profile_by_id()->row_array();
+			//echo $row['pf_id']."=>".$row['pf_fistname'];die;
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+
+
+		
+		$data['wordset'] = $lg->get_tutorial();
 		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Tutorial/v_tutorial2', $data);
 		$this->load->view('Template/footerMain');
 	}
@@ -145,38 +160,85 @@ class C_login extends CI_Controller {
 	
 	public function Lesson_system(){
 		
+		
+		//echo $id;die;
 		$this->load->model('M_login', 'login');
 		$lg = $this->login;
+		//เรียกใช้ฟังก์ชัน 
+		$this->pf_id = $this->session->userdata("pf_id");
+		//ใส่ค่า $this->session->set_userdata("pf_id", $id);
+		$row = $lg->get_profile_by_id()->row_array();
+			//echo $row['pf_id']."=>".$row['pf_fistname'];die;
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+
+		
 		$data['lesson'] = $lg->get_lesson();
 		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Tutorial/v_lesson', $data);
 		$this->load->view('Template/footerMain');
 	}
 	
 	public function main_speed()
 	{
+		
+		$this->load->model('M_login', 'login');
+		$lg = $this->login;
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $lg->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+		
 		$this->load->view('Template/headerMain');
-		//$this->load->view('Template/navi_bar');
+		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Speedtest/v_speedtest');
 		$this->load->view('Template/footerMain');
 	}
 	public function test_speedEN()
 	{
 		$this->load->model('M_login', 'wordset');
+		$wordset = $this->wordset;
 		$data['wordset'] = $this->wordset->get_wordsetEN();
 		// echo "test";
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $wordset->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+		
 		$this->load->view('Template/headerMain');
-		//$this->load->view('Template/navi_bar');
+		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Speedtest/v_speedtestEN', $data);
 		$this->load->view('Template/footerMain');
 	}
 	public function test_speedTH()
 	{
+		
 		$this->load->model('M_login', 'wordset');
+		$wordset = $this->wordset;
+		$data['wordset'] = $this->wordset->get_wordsetEN();
+		// echo "test";
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $wordset->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+		
+		
+		
 		$data['wordset'] = $this->wordset->get_wordsetTH();
 		// echo "test";
 		$this->load->view('Template/headerMain');
-		//$this->load->view('Template/navi_bar');
+		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Speedtest/v_speedtestTH', $data);
 		$this->load->view('Template/footerMain');
 	}
@@ -186,8 +248,21 @@ class C_login extends CI_Controller {
 	public function main_competition()
 	{
 		$this->load->model('M_login', 'com');
+		$com = $this->com;
+	
+		// echo "test";
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $com->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+		
+		
 		// echo "test";
 		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Competition/v_maincom');
 		$this->load->view('Template/footerMain');
 	}

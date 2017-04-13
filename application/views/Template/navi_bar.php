@@ -8,9 +8,9 @@
 		});	
 		FB.getLoginStatus(function(response) {
 			if (response.status === 'connected') {
-				// document.getElementById('status').innerHTML = 'We are connected.';
+				 document.getElementById('status').innerHTML = 'We are connected.';
 				getInfo();
-				// document.getElementById('login').style.visibility = 'hidden';
+				 document.getElementById('login').style.visibility = 'hidden';
 			} else if (response.status === 'not_authorized') {
 				document.getElementById('status').innerHTML = 'We are not logged in.'
 			} else {
@@ -65,7 +65,7 @@
 		</div>
 		<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="<?php echo site_url("Login/C_login/lesson_system")?>">Tutorial Typing<span class="sr-only">(current)</span></a></li>
+				<li><a href="<?php echo site_url("Login/C_login/Lesson_system");?>">Tutorial Typing</a></li>
 				<li><a href="<?php echo site_url("Login/C_login/main_speed")?>">Typing Test</a></li>
 				<li><a href="<?php echo site_url("Login/C_login/main_competition")?>">Competition</a></li>
 			</ul>
@@ -87,7 +87,7 @@
                 <!-- The user image in the menu -->
                 <li class="user-header">
                   <img id ="picture_fb1" src="<?php echo base_url(); ?>template/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-						<p>
+						<p id="name_fb"><?php if($id==NULL || $id == 0){echo $pf_fistname." ".$pf_lastname;}?>
 						<small>Member</small>
 						</p>
                 </li>
