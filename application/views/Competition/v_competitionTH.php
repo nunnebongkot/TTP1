@@ -270,7 +270,27 @@ $(document).ready(function(){
 			   	$("#keystroke").html("จำนวนครั้งที่พิมพ์: " + keystroke);
 			   	$("#correctstroke").html("จำนวนครั้งที่พิมพ์ถูก: " + correct_stroke).css("color", "green");
 				$("#wrongstroke").html("จำนวนครั้งที่พิมพ์ผิด: " + wrong_stroke).css("color", "red");
+				
+				var url = "/TTP1/index.php/login/c_login/insert_score/";
+				var data = { 
+					sc_wpm: correct_word, 
+					sc_cword: correct_word, 
+					sc_wword: wrong_word, 
+					sc_keystroke: keystroke, 
+					sc_ckeystroke: correct_stroke,
+					sc_pc_id: 1, // id get from session 
+					sc_wkeystroke: wrong_stroke
+				};
+				console.log(data);
 
+
+				$.ajax({
+				  type: "GET",
+				  url: url,
+				  data: data,
+				  //success: success,
+				  dataType: "json"
+				});
 			}
 		}
 	}, 1000);
@@ -281,6 +301,7 @@ $(document).ready(function(){
 function myRefresh() {
 	    location.reload();
 }
+
 
 </script>
 
