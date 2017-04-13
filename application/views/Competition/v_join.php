@@ -1,26 +1,6 @@
 <html>
 	<div class="wrapper">
-		<header class="main-header">
-			<nav class="navbar navbar-static-top">
-				<div class="container">
-					<div class="navbar-header">
-						<a  href="<?php echo site_url("Login/C_login/Main_system")?>" class="navbar-brand"><b>Typing</b>Touch</a>
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-							<i class="fa fa-bars"></i>
-						</button>
-					</div>
-					<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-						<ul class="nav navbar-nav">
-							<li><a href="<?php echo site_url("Login/C_login/lesson_system")?>">Tutorial Typing<span class="sr-only">(current)</span></a></li>
-							<li><a href="<?php echo site_url("Login/C_login/main_speed")?>">Typing Test</a></li>
-							<li class="active"><a href="<?php echo site_url("Login/C_login/main_competition")?>">Competition</a></li>
-						</ul>
-					</div>
-					<!-- /.navbar-custom-menu -->
-				</div>
-				<!-- /.container-fluid -->
-			</nav>
-		</header>
+		
 	  <!-- Full Width Column -->
 		<div class="content-wrapper">
 		    <div class="container">
@@ -47,10 +27,14 @@
 											<?php foreach($com->result() as $row) { ?>
 												<tr>
 													<td><?php echo $row->cpt_title; ?></td>
-													<td><center><input type="submit" value="Join"></center></td>
+													<td><center>
+														<a href="<?php echo site_url('/Login/C_login/test_competition/').$row->cpt_id."/".$row->cpt_language;?>">
+															<button type="button" class="btn btn-warning">Join</button>
+														</a>
+													</button></center></td>
 													<td><center><?php echo $row->cpt_language; ?></center></td>
 													<td><center>xxx</center></td>
-													<td><center>xxx</center></td>
+													<td><center><?php echo $row->cpt_count; ?></center></td>
 												</tr>
 											<?php } ?>
 										</tbody>

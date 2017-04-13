@@ -12,7 +12,7 @@
 				<section class="content">
 					<div class="box box-default">
 						<div class="box-header with-border">
-							<h3 class="box-title"></h3>
+							<h3 class="box-title">ชื่อเกมส์</h3>
 						</div>
 						<div class="box-body">
 							<div class="row">
@@ -66,11 +66,9 @@
 																	<h2><div id="countdown" value="0"> </div><h2>
 																</i>
 															</span>
-															<a href="<?php echo site_url("Login/C_login/v_competition")?>">
-																<span class="info-box-icon bg-gray">
-																	<i class="fa fa-refresh"></i>
-																</span>
-															</a>
+															<span class="info-box-icon bg-gray" id="refresh" onclick="myRefresh()">
+																<i class="fa fa-refresh"></i>
+															</span>
 														</div>
 														<!-- /.info-box -->
 													</div>
@@ -78,6 +76,49 @@
 											</tr>
 										</center>
 									</div>
+							</div>
+						<!-- /.box-body -->
+						</div>
+					</div>
+					<!-- /.box -->
+					<div class="box box-default">
+						<div class="box-header with-border">
+							<h3 class="box-title">ลำดับการแข่งขัน</h3>
+						</div>
+						<div class="box-body">
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-8">
+									<div class="box-body no-padding">
+										<table class="table table-striped">
+											<tbody>
+												<tr>
+													<th>
+														ลำดับ
+													</th>
+													<th>
+														ชื่อผู้เล่น
+													</th>
+													<th>
+														WPM
+													</th>
+												</tr>
+												<tr>
+													<td>
+														ลำดับ
+													</td>
+													<td>
+														ผู้เล่น
+													</td>
+													<td>
+														จำนวนคำที่พิมพ์ต่อนาที
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								
 							</div>
 						<!-- /.box-body -->
 						</div>
@@ -223,7 +264,7 @@ $(document).ready(function(){
 				document.getElementById("countdown").innerHTML = "หมดเวลา !";
 				document.getElementById("sentence").style.display = "none";
 				document.getElementById("keydata").style.display = "none";
-				$("#WPM").html("จำนวนคำที่พิมพ์ต่อนาที: " + correct_word);
+				$("#WPM").html("จำนวนคำต่อนาที (WPM): " + correct_word);
 			   	$("#correctWord").html("จำนวนคำที่พิมพ์ถูก: " + correct_word).css("color", "green");
 				$("#wrongWord").html("จำนวนคำที่พิมพ์ผิด: " + wrong_word).css("color", "red");
 			   	$("#keystroke").html("จำนวนครั้งที่พิมพ์: " + keystroke);
@@ -236,6 +277,10 @@ $(document).ready(function(){
 
 
 });
+
+function myRefresh() {
+	    location.reload();
+}
 
 </script>
 

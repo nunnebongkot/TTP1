@@ -6,13 +6,13 @@
 		    <div class="container">
 		      <!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h1>ทดสอบพิมพ์เร็วภาษาไทย</h1>
+					<h1>Speed Typing Test In English</h1>
 				</section>
 
 				<section class="content">
 					<div class="box box-default">
 						<div class="box-header with-border">
-							<h3 class="box-title"></h3>
+							<h3 class="box-title">Name game</h3>
 						</div>
 						<div class="box-body">
 							<div class="row">
@@ -26,13 +26,13 @@
 															<?php $row = $wordset->row_array(); ?>
 															<?php //print_r($row); ?>
 															<?php //echo $row['cpt_wordset']; ?>
-															<div id="sentence" style="font-size:18px"></div>
+															<div id="sentence" style="font-size:20px"></div>
 														</td>
 														
 													</tr>
 													<tr>
 														<td>
-															<input type="text" id="keydata" class="form-control" placeholder="กด Spacebar เพื่อตรวจสอบคำ">
+															<input type="text" id="keydata" class="form-control" placeholder="Press Keyspace For Check">
 														</td>
 													</tr>
 													<tr>
@@ -66,10 +66,10 @@
 																	<h2><div id="countdown" value="0"> </div><h2>
 																</i>
 															</span>
-															<a href="<?php echo site_url("Login/C_login/v_competition")?>">
-																<span class="info-box-icon bg-gray">
-																	<i class="fa fa-refresh"></i>
-																</span>
+															
+															<span class="info-box-icon bg-gray" id="refresh" onclick="myRefresh()">
+																<i class="fa fa-refresh"></i>
+															</span>
 															</a>
 														</div>
 														<!-- /.info-box -->
@@ -78,6 +78,50 @@
 											</tr>
 										</center>
 									</div>
+							</div>
+						<!-- /.box-body -->
+						</div>
+					</div>
+					<!-- /.box -->
+
+					<div class="box box-default">
+						<div class="box-header with-border">
+							<h3 class="box-title">Competition Ranking</h3>
+						</div>
+						<div class="box-body">
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-8">
+									<div class="box-body no-padding">
+										<table class="table table-striped">
+											<tbody>
+												<tr>
+													<th>
+														No.
+													</th>
+													<th>
+														Username
+													</th>
+													<th>
+														WPM
+													</th>
+												</tr>
+												<tr>
+													<td>
+														1
+													</td>
+													<td>
+														qwerty
+													</td>
+													<td>
+														000
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								
 							</div>
 						<!-- /.box-body -->
 						</div>
@@ -220,22 +264,27 @@ $(document).ready(function(){
 			if(time <= 0) {
 				clearInterval(x);
 				$("#keydata").val("");
-				document.getElementById("countdown").innerHTML = "หมดเวลา !";
+				document.getElementById("countdown").innerHTML = "Time Out !";
 				document.getElementById("sentence").style.display = "none";
 				document.getElementById("keydata").style.display = "none";
-				$("#WPM").html("จำนวนคำที่พิมพ์ต่อนาที: " + correct_word);
-			   	$("#correctWord").html("จำนวนคำที่พิมพ์ถูก: " + correct_word).css("color", "green");
-				$("#wrongWord").html("จำนวนคำที่พิมพ์ผิด: " + wrong_word).css("color", "red");
-			   	$("#keystroke").html("จำนวนครั้งที่พิมพ์: " + keystroke);
-			   	$("#correctstroke").html("จำนวนครั้งที่พิมพ์ถูก: " + correct_stroke).css("color", "green");
-				$("#wrongstroke").html("จำนวนครั้งที่พิมพ์ผิด: " + wrong_stroke).css("color", "red");
+				$("#WPM").html("Words Per Minute (WPM): " + correct_word);
+			   	$("#correctWord").html("Correct Words: " + correct_word).css("color", "green");
+				$("#wrongWord").html("Wrong Words: " + wrong_word).css("color", "red");
+			   	$("#keystroke").html("Keystrokes: " + keystroke);
+			   	$("#correctstroke").html("Correct Keystrokes: " + correct_stroke).css("color", "green");
+				$("#wrongstroke").html("Wrong Keystrokes: " + wrong_stroke).css("color", "red");
 
 			}
 		}
 	}, 1000);
 
+	
 
 });
+
+function myRefresh() {
+	    location.reload();
+}
 
 </script>
 

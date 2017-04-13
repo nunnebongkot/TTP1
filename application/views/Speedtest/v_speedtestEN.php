@@ -3,7 +3,6 @@
 	<div class="wrapper">
 		 <!-- Full Width Column -->
 		<div class="content-wrapper">
-
 		    <div class="container">
 		      <!-- Content Header (Page header) -->
 				<section class="content-header">
@@ -17,8 +16,8 @@
 						</div>
 						<div class="box-body">
 							<div class="row">
-									<div class="col-md-2"></div>
-									<div class="col-md-6">
+									<div class="col-md-1"></div>
+									<div class="col-md-8">
 										<div class="box-body no-padding">
 											<table class="table table-striped">
 												<tbody>
@@ -27,19 +26,19 @@
 															<?php $row = $wordset->row_array(); ?>
 															<?php //print_r($row); ?>
 															<?php //echo $row['cpt_wordset']; ?>
-															<div id="sentence"></div>
+															<div id="sentence" style="font-size:20px"></div>
 														</td>
 														
 													</tr>
 													<tr>
 														<td>
-															<input type="text" id="keydata">
+															<input type="text" id="keydata" class="form-control" placeholder="Press Keyspace For Check">
 														</td>
 													</tr>
 													<tr>
 														<td>
 															<div class="col-md-2"></div>
-															<div class="col-md-9">
+															<div class="col-md-8">
 																<h1><div id="WPM" value="0"> </div></h1>
 																<h3>
 																	<div id="correctWord" value="0"> </div>
@@ -55,11 +54,26 @@
 											</table>
 										</div>
 									</div>
-									<div class="col-md-3">
+									<div class="col-md-1">
 										<center>
 											<tr>
 												<td>
-													<h1><div id="countdown" value="0"> </div><h1>
+													<div class="col-md-3"></div>
+													<div class="col-md-3">
+														<div class="info-box">
+															<span class="info-box-icon bg-red">
+																<i>
+																	<h2><div id="countdown" value="0"> </div><h2>
+																</i>
+															</span>
+															<a href="<?php echo site_url("Login/C_login/test_speedEN")?>">
+																<span class="info-box-icon bg-gray">
+																	<i class="fa fa-refresh"></i>
+																</span>
+															</a>
+														</div>
+														<!-- /.info-box -->
+													</div>
 												</td>
 											</tr>
 										</center>
@@ -195,7 +209,7 @@ $(document).ready(function(){
 
 	//นับถอยหลัง
 	
-	var time = 60;
+	var time = 6;
 
 	var x = setInterval(function() {
 		if(keystroke >= 1) {
@@ -210,11 +224,11 @@ $(document).ready(function(){
 				document.getElementById("sentence").style.display = "none";
 				document.getElementById("keydata").style.display = "none";
 				$("#WPM").html("Words Per Minute: " + correct_word);
-			   	$("#correctWord").html("Correct Word: " + correct_word).css("color", "green");
-				$("#wrongWord").html("Wrong Word: " + wrong_word).css("color", "red");
-			   	$("#keystroke").html("Keystroke: " + keystroke);
-			   	$("#correctstroke").html("Correct Keystroke: " + correct_stroke).css("color", "green");
-				$("#wrongstroke").html("Wrong Keystroke: " + wrong_stroke).css("color", "red");
+			   	$("#correctWord").html("Correct Words: " + correct_word).css("color", "green");
+				$("#wrongWord").html("Wrong Words: " + wrong_word).css("color", "red");
+			   	$("#keystroke").html("Keystrokes: " + keystroke);
+			   	$("#correctstroke").html("Correct Keystrokes: " + correct_stroke).css("color", "green");
+				$("#wrongstroke").html("Wrong Keystrokes: " + wrong_stroke).css("color", "red");
 
 			}
 		}

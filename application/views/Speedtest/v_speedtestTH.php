@@ -16,8 +16,8 @@
 						</div>
 						<div class="box-body">
 							<div class="row">
-									<div class="col-md-2"></div>
-									<div class="col-md-6">
+									<div class="col-md-1"></div>
+									<div class="col-md-8">
 										<div class="box-body no-padding">
 											<table class="table table-striped">
 												<tbody>
@@ -26,19 +26,19 @@
 															<?php $row = $wordset->row_array(); ?>
 															<?php //print_r($row); ?>
 															<?php //echo $row['cpt_wordset']; ?>
-															<div id="sentence"></div>
+															<div id="sentence" style="font-size:18px"></div>
 														</td>
 														
 													</tr>
 													<tr>
 														<td>
-															<input type="text" id="keydata">
+															<input type="text" id="keydata" class="form-control" placeholder="กด Spacebar เพื่อตรวจสอบคำ">
 														</td>
 													</tr>
 													<tr>
 														<td>
 															<div class="col-md-2"></div>
-															<div class="col-md-9">
+															<div class="col-md-8">
 																<h1><div id="WPM" value="0"> </div></h1>
 																<h3>
 																	<div id="correctWord" value="0"> </div>
@@ -54,11 +54,26 @@
 											</table>
 										</div>
 									</div>
-									<div class="col-md-3">
+									<div class="col-md-1">
 										<center>
 											<tr>
 												<td>
-													<h1><div id="countdown" value="0"> </div><h1>
+													<div class="col-md-3"></div>
+													<div class="col-md-3">
+														<div class="info-box">
+															<span class="info-box-icon bg-red">
+																<i>
+																	<h2><div id="countdown" value="0"> </div><h2>
+																</i>
+															</span>
+															<a href="<?php echo site_url("Login/C_login/test_speedTH")?>">
+																<span class="info-box-icon bg-gray">
+																	<i class="fa fa-refresh"></i>
+																</span>
+															</a>
+														</div>
+														<!-- /.info-box -->
+													</div>
 												</td>
 											</tr>
 										</center>
@@ -194,7 +209,7 @@ $(document).ready(function(){
 
 	//นับถอยหลัง
 	
-	var time = 60;
+	var time = 6;
 
 	var x = setInterval(function() {
 		if(keystroke >= 1) {
@@ -205,7 +220,7 @@ $(document).ready(function(){
 			if(time <= 0) {
 				clearInterval(x);
 				$("#keydata").val("");
-				document.getElementById("countdown").innerHTML = "Tหมดเวลา !";
+				document.getElementById("countdown").innerHTML = "หมดเวลา !";
 				document.getElementById("sentence").style.display = "none";
 				document.getElementById("keydata").style.display = "none";
 				$("#WPM").html("จำนวนคำที่พิมพ์ต่อนาที: " + correct_word);

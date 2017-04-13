@@ -62,18 +62,17 @@ class M_login extends CI_model {
 				VALUE(?, ?, ?, ?, ?, ?, ?)";
 		$this->db->query($sql, array($this->pf_fbId_gmId, $this->pf_username, $this->pf_password, $this->pf_fistname, $this->pf_lastname, $this->pf_email, $this->pf_bio));
 	}
-
-	public function get_wordsetTH()	//หน้าแรก
+	public function get_wordsetEN()	//หน้าแรก
 	{
-		$sql = "SELECT * FROM tpt_competition WHERE cpt_id=2";
+		$sql = "SELECT * FROM tpt_competition WHERE cpt_language=0 ORDER BY RAND() LIMIT 1";
 		$query = $this->db->query($sql);
 		return $query;
 		//$query = $this->db->get('tpt_profile');
         //return $query->result();
 	}
-	public function get_wordsetEN()	//หน้าแรก
+	public function get_wordsetTH()	//หน้าแรก
 	{
-		$sql = "SELECT * FROM tpt_competition WHERE cpt_id=1";
+		$sql = "SELECT * FROM tpt_competition WHERE cpt_language=1 ORDER BY RAND() LIMIT 1";
 		$query = $this->db->query($sql);
 		return $query;
 		//$query = $this->db->get('tpt_profile');
@@ -88,6 +87,14 @@ class M_login extends CI_model {
 	public function get_competition()
 	{
 		$sql = "SELECT *, COUNT(lc_pf_id) as par FROM tpt_competition LEFT JOIN logcom ON logcom.lc_cpt_id = tpt_competition.cpt_id GROUP BY cpt_id";
+		$query = $this->db->query($sql);
+		return $query;
+		//$query = $this->db->get('tpt_profile');
+        //return $query->result();
+	}
+	public function get_wordset($cpt_id=NULL)	//หน้าแรก
+	{
+		$sql = "SELECT * FROM tpt_competition WHERE cpt_id=".$cpt_id." ";
 		$query = $this->db->query($sql);
 		return $query;
 		//$query = $this->db->get('tpt_profile');

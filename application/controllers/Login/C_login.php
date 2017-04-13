@@ -224,7 +224,7 @@ class C_login extends CI_Controller {
 		
 		$this->load->model('M_login', 'wordset');
 		$wordset = $this->wordset;
-		$data['wordset'] = $this->wordset->get_wordsetEN();
+		//$data['wordset'] = $this->wordset->get_wordsetTH();
 		// echo "test";
 		$this->pf_id = $this->session->userdata("pf_id");
 		$row = $wordset->get_profile_by_id()->row_array();
@@ -267,7 +267,20 @@ class C_login extends CI_Controller {
 	}
 	public function insert_competition()
 	{
+		$this->load->model('M_login', 'com');
+		$com = $this->com;
+	
+		// echo "test";
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $com->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+
 		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Competition/v_insertcom');
 		$this->load->view('Template/footerMain');
 	}
@@ -290,20 +303,51 @@ class C_login extends CI_Controller {
 	public function join_competition()
 	{
 		$this->load->model('M_login', 'com');
+		$com = $this->com;
+	
+		// echo "test";
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $com->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+		
 		$data['com'] = $this->com->get_competition();
 
 		// echo "test";
 		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Competition/v_join', $data);
 		$this->load->view('Template/footerMain');
 	}
-	public function test_competition()
+	public function test_competition($cpt_id=NULL, $cpt_language=NULL)
 	{
 		$this->load->model('M_login', 'wordset');
-		$data['wordset'] = $this->wordset->get_wordsetTH();
+		$wordset = $this->wordset;
+		//$data['wordset'] = $this->wordset->get_wordsetTH();
+		// echo "test";
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $wordset->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+		
+		
+		
+		$data['wordset'] = $this->wordset->get_wordset($cpt_id, $cpt_language);
+		//$data['wordset'] = $this->com->get_competition();
 		// echo "test";
 		$this->load->view('Template/headerMain');
-		$this->load->view('Competition/v_competition', $data);
+		$this->load->view('Template/navi_bar', $data);
+		if($cpt_language==0){
+			$this->load->view('Competition/v_competitionEN', $data);
+		}else{
+			$this->load->view('Competition/v_competitionTH', $data);
+		}
+		
 		$this->load->view('Template/footerMain');
 	}
 
