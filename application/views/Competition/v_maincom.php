@@ -26,7 +26,7 @@
 		    <div class="container">
 		      <!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h1>Welcome to Typing.com!</h1>
+					<h1>Competition</h1>
 				</section>
 
 				<section class="content">

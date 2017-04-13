@@ -28,7 +28,7 @@
 		    <div class="container">
 		      <!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h1>Welcome to Typing.com!</h1>
+					<h1>Speed Typing Test In English</h1>
 				</section>
 
 				<section class="content">
@@ -216,7 +216,7 @@ $(document).ready(function(){
 
 	//นับถอยหลัง
 	
-	var time = 5;
+	var time = 60;
 
 	var x = setInterval(function() {
 		if(keystroke >= 1) {
