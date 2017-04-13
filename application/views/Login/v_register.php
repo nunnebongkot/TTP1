@@ -23,26 +23,15 @@
 						echo form_open("Login/C_login/insert_regis",$data);
 					?>
 						<input type="hidden" name="pf_fbId_gmId" value="<?php echo $id; ?>" />
-								<?php
-								if(!$username){
-								?>
+
 								<div class="form-group">
 									<label class="sr-only" for="form-firstname">Username</label>
 									<input type="text" name="pf_username" placeholder="Username..." value="" class="form-firstname form-control" required>
 								</div>
-								<?php
-								}
-								?>
-								<?php
-								if(!$password){
-								?>
 								<div class="form-group">
 									<label class="sr-only" for="form-firstname">Password</label>
 									<input type="password" name="pf_password" placeholder="Password..." value="" class="form-firstname form-control" required>
 								</div>
-								<?php
-								}
-								?>
 	                    	<div class="form-group">
 	                    		<label class="sr-only" for="form-firstname">First name</label>
 								<?php

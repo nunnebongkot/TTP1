@@ -223,7 +223,7 @@
 				</div>
 			   <div class="key dual" id="key-29">
 				A&nbsp;&nbsp;ฤ
-				&nbsp;&nbsp;&nbsp;&nbsp;ถ<br> 
+				&nbsp;&nbsp;&nbsp;&nbsp;ฟ<br> 
 			  </div>
 				<div class="key dual" id="key-30">
 				S&nbsp;&nbsp;ฆ
