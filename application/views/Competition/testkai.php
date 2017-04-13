@@ -1,18 +1,109 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <html>
+	<div class="wrapper">
+		<header class="main-header">
+			<nav class="navbar navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<a  href="<?php echo site_url("Login/C_login/Main_system")?>" class="navbar-brand"><b>Typing</b>Touch</a>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="<?php echo site_url("Login/C_login/lesson_system")?>">Tutorial Typing<span class="sr-only">(current)</span></a></li>
+							<li class="active"><a href="<?php echo site_url("Login/C_login/main_speed")?>">Typing Test</a></li>
+							<li><a href="<?php echo site_url("Login/C_login/main_competition")?>">Competition</a></li>
+						</ul>
+					</div>
+					<!-- /.navbar-custom-menu -->
+				</div>
+				<!-- /.container-fluid -->
+			</nav>
+		</header>
 
-	<?php $row = $wordset->row_array(); ?>
-	<?php //print_r($row); ?>
-	<?php //echo $row['cpt_wordset']; ?>
-	<div id="sentence"> </div>
-	<input type="text" id="keydata" />
-	<div id="countdown" value="0"> </div>
-	<div id="WPM" value="0"> </div>
-	<div id="correctWord" value="0"> </div>
-	<div id="wrongWord" value="0"> </div>
-	<div id="keystroke" value="0"> </div>
-	<div id="correctstroke" value="0"> </div>
-	<div id="wrongstroke" value="0"> </div>
+		 <!-- Full Width Column -->
+		<div class="content-wrapper">
+		    <div class="container">
+		      <!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>Speed Typing Test In English</h1>
+				</section>
+
+				<section class="content">
+					<div class="box box-default">
+						<div class="box-header with-border">
+							<h3 class="box-title"></h3>
+						</div>
+						<div class="box-body">
+							<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-6">
+										<div class="box-body no-padding">
+											<table class="table table-striped">
+												<tbody>
+													<tr>
+														<td>
+															<?php $row = $wordset->row_array(); ?>
+															<?php //print_r($row); ?>
+															<?php //echo $row['cpt_wordset']; ?>
+															<div id="sentence"></div>
+														</td>
+														
+													</tr>
+													<tr>
+														<td>
+															<input type="text" id="keydata">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<div class="col-md-2"></div>
+															<div class="col-md-9">
+																<h1><div id="WPM" value="0"> </div></h1>
+																<h3>
+																	<div id="correctWord" value="0"> </div>
+																	<div id="wrongWord" value="0"> </div>
+																	<div id="keystroke" value="0"> </div>
+																	<div id="correctstroke" value="0"> </div>
+																	<div id="wrongstroke" value="0"> </div>
+																</h3>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<center>
+											<tr>
+												<td>
+													<h1><div id="countdown" value="0"> </div><h1>
+												</td>
+											</tr>
+										</center>
+									</div>
+							</div>
+						<!-- /.box-body -->
+						</div>
+					</div>
+					<!-- /.box -->
+				</section>
+				<!-- /.content -->
+
+			</div>
+		</div>
+
+		<footer class="main-footer">
+			<div class="container">
+				<div class="pull-right hidden-xs">
+				</div>
+			</div>
+		<!-- /.container -->
+		</footer>
+	</div>
 </html>
 
 <script>
@@ -60,7 +151,7 @@ $(document).ready(function(){
 				$("#sentence_" + count).css("color", "red");
 			}
 					
-			$("#sentence_" + count).css("background-color", "white");
+			$("#sentence_" + count).css("background-color", "");
 			$("#keydata").val("");
 			count++;
 	   	}
@@ -76,10 +167,10 @@ $(document).ready(function(){
 
 	   	//correct_stroke = keystroke - wrong_stroke;
 
-	   	$("WPM").html("จำนวนคำที่พิมพ์ต่อนาที: "+correct_word);
+	   	/*$("WPM").html("จำนวนคำที่พิมพ์ต่อนาที: "+correct_word);
 	   	$("#correctWord").html("จำนวนคำที่พิมพ์ถูก: " + correct_word).css("color", "green");
 		$("#wrongWord").html("จำนวนคำที่พิมพ์ผิด: " + wrong_word).css("color", "red");
-	   	$("#keystroke").html("จำนวนครั้งที่พิมพ์: " + keystroke);
+	   	$("#keystroke").html("จำนวนครั้งที่พิมพ์: " + keystroke);*/
 
 	   	//console.log(keystroke);
 	});
@@ -116,8 +207,8 @@ $(document).ready(function(){
 
 		//alert("hello");
 
-   	$("#correctstroke").html("จำนวนครั้งที่พิมพ์ถูก: " + correct_stroke).css("color", "green");
-	$("#wrongstroke").html("จำนวนครั้งที่พิมพ์ผิด: " + wrong_stroke).css("color", "red");
+   	//$("#correctstroke").html("จำนวนครั้งที่พิมพ์ถูก: " + correct_stroke).css("color", "green");
+	//$("#wrongstroke").html("จำนวนครั้งที่พิมพ์ผิด: " + wrong_stroke).css("color", "red");
 
 	});
 
@@ -136,11 +227,21 @@ $(document).ready(function(){
 			if(time <= 0) {
 				clearInterval(x);
 				$("#keydata").val("");
-				document.getElementById("countdown").innerHTML = "หมดเวลาละ ";
+				document.getElementById("countdown").innerHTML = "Time Out !";
+				document.getElementById("sentence").style.display = "none";
 				document.getElementById("keydata").style.display = "none";
+				$("#WPM").html("Words Per Minute: " + correct_word);
+			   	$("#correctWord").html("Correct Word: " + correct_word).css("color", "green");
+				$("#wrongWord").html("Wrong Word: " + wrong_word).css("color", "red");
+			   	$("#keystroke").html("Keystroke: " + keystroke);
+			   	$("#correctstroke").html("Correct Keystroke: " + correct_stroke).css("color", "green");
+				$("#wrongstroke").html("Wrong Keystroke: " + wrong_stroke).css("color", "red");
+
 			}
 		}
 	}, 1000);
+
+
 });
 
 </script>
