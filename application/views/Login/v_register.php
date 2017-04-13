@@ -24,7 +24,7 @@
 					?>
 						<input type="hidden" name="pf_fbId_gmId" value="<?php echo $id; ?>" />
 								<?php
-								if(!$fname){
+								if(!$username){
 								?>
 								<div class="form-group">
 									<label class="sr-only" for="form-firstname">Username</label>
@@ -34,7 +34,7 @@
 								}
 								?>
 								<?php
-								if(!$fname){
+								if(!$password){
 								?>
 								<div class="form-group">
 									<label class="sr-only" for="form-firstname">Password</label>

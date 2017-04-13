@@ -31,10 +31,10 @@ class M_login extends CI_model {
 		$query = $this->db->query($sql, array($this->pf_id));
 		return $query;
 	}
-	public function get_tutorial()	//หน้าแรก
+	public function get_tutorial($tt_id=NULL,$tt_language=NULL)	//หน้าแรก
 	{
 		
-		$sql = "SELECT * FROM tpt_tutorial WHERE tt_id=1 && tt_language=0 ";
+		$sql = "SELECT * FROM tpt_tutorial WHERE tt_id=".$tt_id." && tt_language=".$tt_language." ";
 		$query = $this->db->query($sql);
 		return $query;
 		

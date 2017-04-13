@@ -28,7 +28,7 @@
 					<?php foreach($lesson->result() as $item) {?>
 						<?php if($item->tt_language=='0'){ ?>
 							<?php //if($item->lg_pf_id == NULL) { ?>
-								<a href="<?php echo site_url("Login/C_login/Tutorial_system")?>">
+								<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/0">
 							<?php //} ?>
                         <?php echo "บทที่่ ".$item->tt_id." แป้น ".$item->tt_lesson;?>
 						<BR>
@@ -73,7 +73,7 @@
 					<?php foreach($lesson->result() as $item) {?>
 						<?php if($item->tt_language=='1'){ ?>
 							<?php //if($item->lg_pf_id == NULL) { ?>
-								<a href="<?php echo site_url("Login/C_login/Tutorial_system")?>">
+								<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
 							<?php //} ?>
                         <?php echo "บทที่่ ".$item->tt_id." แป้น ".$item->tt_lesson;?>
 						<BR>

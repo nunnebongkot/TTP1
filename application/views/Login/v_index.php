@@ -34,7 +34,7 @@
                 <h1 id="homeHeading">Typing Touch Program.</h1>
                 <hr>
                 <p>Learn Touch Typing for free!!</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Get Started!</a>
+                <a href="<?php echo site_url("Login/C_login/login_system")?>" class="btn btn-primary btn-xl page-scroll">Get Started!</a>
             </div>
         </div>
     </header>
@@ -45,7 +45,7 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">TypingClub is the most effective way to learn how to type.(KAIIMOOK)!</h2>
                     <hr class="light">
-                    <p class="text-faded"> start a typing practice with us now.Please Login !</p>
+                    <p class="text-faded"> Start a typing practice with us now.Please Login !</p>
                 </div>
             </div>
         </div>

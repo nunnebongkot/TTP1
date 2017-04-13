@@ -135,10 +135,12 @@ class C_login extends CI_Controller {
 		$this->load->view('Login/v_profile', $data);
 		$this->load->view('Template/footerMain');
 	}
-	public function tutorial_system()
+	public function tutorial_system($tt_id=NULL,$tt_language=NULL)
 	{
 		$this->load->model('M_login', 'login');
 		$lg = $this->login;
+		
+		//echo $tt_id;
 		
 		$this->pf_id = $this->session->userdata("pf_id");
 		$row = $lg->get_profile_by_id()->row_array();
@@ -147,12 +149,12 @@ class C_login extends CI_Controller {
 		$data['id'] = $row['pf_fbId_gmId'];
 		$data['pf_fistname'] = $row['pf_fistname'];
 		$data['pf_lastname'] = $row['pf_lastname'];
-
-
 		
-		$data['wordset'] = $lg->get_tutorial();
+		$data['wordset'] = $lg->get_tutorial($tt_id,$tt_language);
+		
 		$this->load->view('Template/headerMain');
 		$this->load->view('Template/navi_bar', $data);
+		
 		$this->load->view('Tutorial/v_tutorial2', $data);
 		$this->load->view('Template/footerMain');
 	}
