@@ -24,13 +24,20 @@
                 <div class="panel box box-primary">
                   <div class="box-header with-border">
                     <h4 class="box-title">
-					
-					<?php foreach($lesson->result() as $item) {?>
+					<?php $complete = 0;?>
+					<?php foreach($lesson->result() as $key=>$item) {?>
+			
 						<?php if($item->tt_language=='0'){ ?>
-							<?php //if($item->lg_pf_id == NULL) { ?>
-								<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/0">
-							<?php //} ?>
+								<?php //if($key > 0){ ?>
+									<?php if($key == $complete) { ?>
+										<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/0">
+								<?php }
+								//}?>
                         <?php echo "บทที่่ ".$item->tt_id." แป้น ".$item->tt_lesson;?>
+						<?php if($item->lg_id != NULL){ ?>
+							<?php $complete++; ?>
+							<?php echo "comพลีส"; ?>
+						<?php } ?>
 						<BR>
                       </a>
 					<?php }}?>
@@ -70,15 +77,26 @@
                   <div class="box-header with-border">
                     <h4 class="box-title">
 					
-					<?php foreach($lesson->result() as $item) {?>
+					<?php $completeEn = 0;?>
+					<?php $index = 0;?>
+					<?php foreach($lesson->result() as $key=>$item) {?>
+			
 						<?php if($item->tt_language=='1'){ ?>
-							<?php //if($item->lg_pf_id == NULL) { ?>
-								<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
-							<?php //} ?>
+								<?php //if($key > 0){ ?>
+									<?php if($index == $completeEn) { ?>
+										<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
+								<?php }
+								//}?>
                         <?php echo "บทที่่ ".$item->tt_id." แป้น ".$item->tt_lesson;?>
+						<?php if($item->lg_id != NULL){ ?>
+							<?php $completeEn++; ?>
+							<?php echo "comพลีส"; ?>
+						<?php } ?>
+						<?php $index++; ?>
 						<BR>
                       </a>
 					<?php }}?>
+				
 				
                     </h4>
                   </div>
@@ -111,3 +129,5 @@
     <!-- /.container -->
   </div>
 </div>
+
+<se

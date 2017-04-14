@@ -390,6 +390,21 @@ $(document).ready(function(){
 				count++;
 					if(word.length == count){
 						alert("Nice");
+							var url = "/TTP1/index.php/login/c_login/insert_log/";
+							var data = { 
+							
+								lg_pf_id: <?php echo $this->session->userdata("pf_id"); ?>,
+								lg_tt_id: <?php echo $row['tt_id']; ?>
+								
+							};
+							//console.log(data);
+							$.ajax({
+							  type: "GET",
+							  url: url,
+							  data: data,
+							  //success: success,
+							  dataType: "json"
+							});
 					}
 				word_count = 0;
 				sentence_count++;
@@ -491,6 +506,9 @@ function keys_check(character){
 		}	
 	}
 }
+
+
+
 </script>
 
 

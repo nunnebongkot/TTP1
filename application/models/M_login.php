@@ -141,4 +141,12 @@ class M_login extends CI_model {
 				VALUE(?, ?, ?)";
 		$this->db->query($sql, array($this->lg_id, $this->lg_pf_id, $this->lg_tt_id));
 	}
+	
+	public function get_log($lg_pf_id=NULL, $lg_tt_id=NULL)
+	{
+		$sql = "SELECT COUNT(*) AS getlog FROM tpt_log WHERE lg_pf_id=".$lg_pf_id." && lg_tt_id=".$lg_tt_id;
+		$query = $this->db->query($sql);
+		return $query->row_array()["getlog"];
+	}
+	
 }

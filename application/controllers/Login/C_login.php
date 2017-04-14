@@ -410,11 +410,15 @@ class C_login extends CI_Controller {
 		$this->load->model('M_login', 'login');
 		$lg = $this->login;
 		
-		$this->lg_id = $this->input->post('lg_id');
-		$this->lg_pf_id = $this->input->post('lg_pf_id');
-		$this->lg_tt_id = $this->input->post('lg_tt_id');
-		$lg->insert_log();
-		redirect('Login/C_login/Lesson_system');
+		
+		$this->lg_pf_id = $this->input->get('lg_pf_id');
+		$this->lg_tt_id = $this->input->get('lg_tt_id');
+		$getlog = $lg->get_log($this->lg_pf_id, $this->lg_tt_id);
+		if($getlog == 0){
+			$lg->insert_log();
+		}
+		
+		//redirect('Login/C_login/Lesson_system');
 	}
 	
 	public function test($lg_id=NULL, $lg_pf_id=NULL, $lg_tt_id=NULL)
