@@ -130,7 +130,7 @@ class M_login extends CI_model {
 
 	public function get_rank($cpt_id=NULL)
 	{
-		$sql = "SELECT * FROM tpt_score INNER JOIN tpt_profile ON tpt_score.sc_pf_id = tpt_profile.pf_id WHERE tpt_score.sc_cpt_id=".$cpt_id." GROUP BY tpt_score.sc_pf_id ORDER BY sc_wpm DESC, sc_wword ASC, sc_wkeystroke ASC";
+		$sql = "SELECT * FROM tpt_score INNER JOIN tpt_profile ON tpt_score.sc_pf_id = tpt_profile.pf_id WHERE tpt_score.sc_cpt_id=".$cpt_id." GROUP BY tpt_score.sc_pf_id ORDER BY sc_wpm DESC, sc_wword ASC, sc_wkeystroke ASC LIMIT 10";
 		$query = $this->db->query($sql);
 		return $query;
 	}

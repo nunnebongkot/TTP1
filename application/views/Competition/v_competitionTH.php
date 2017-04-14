@@ -12,7 +12,7 @@
 				<section class="content">
 					<div class="box box-default">
 						<div class="box-header with-border">
-							<h3 class="box-title">ชื่อเกมส์</h3>
+							<h3 class="box-title"></h3>
 						</div>
 						<div class="box-body">
 							<div class="row">
@@ -61,7 +61,7 @@
 														<div class="info-box">
 															<span class="info-box-icon bg-red">
 																<i>
-																	<h2><div id="countdown" value="0"> </div><h2>
+																	<h2><div id="countdown" value="0"></div><h2>
 																</i>
 															</span>
 															<span class="info-box-icon bg-gray" id="refresh" onclick="myRefresh()">
@@ -254,7 +254,7 @@ $(document).ready(function(){
 
 	//นับถอยหลัง
 	
-	var time = 6;
+	var time = 60;
 
 	var x = setInterval(function() {
 		if(keystroke >= 1) {

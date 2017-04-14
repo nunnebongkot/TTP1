@@ -433,4 +433,23 @@ class C_login extends CI_Controller {
 		$this->load->view('Tutorial/v_test', $data);
 		$this->load->view('Template/footerMain');
 	}
+
+	public function admin()
+	{
+		
+		$this->load->model('M_login', 'login');
+		$lg = $this->login;
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $lg->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+		
+		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_bar', $data);
+		$this->load->view('Admin/v_main_admin');
+		$this->load->view('Template/footerMain');
+	}
 }

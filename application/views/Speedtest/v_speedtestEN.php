@@ -209,7 +209,7 @@ $(document).ready(function(){
 
 	//นับถอยหลัง
 	
-	var time = 6;
+	var time = 60;
 
 	var x = setInterval(function() {
 		if(keystroke >= 1) {
@@ -223,7 +223,7 @@ $(document).ready(function(){
 				document.getElementById("countdown").innerHTML = "Time Out !";
 				document.getElementById("sentence").style.display = "none";
 				document.getElementById("keydata").style.display = "none";
-				$("#WPM").html("Words Per Minute: " + correct_word);
+				$("#WPM").html("Words Per Minute (WPM): " + correct_word);
 			   	$("#correctWord").html("Correct Words: " + correct_word).css("color", "green");
 				$("#wrongWord").html("Wrong Words: " + wrong_word).css("color", "red");
 			   	$("#keystroke").html("Keystrokes: " + keystroke);

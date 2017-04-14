@@ -21,7 +21,7 @@
 									<a href="<?php echo site_url("Login/C_login/test_speedEN")?>">
 										<div class="info-box bg-gray disabled color-palette">
 											<span class="info-box-icon">
-												<img src="http://www.huaykaewpalace.com/private_folder/us.png" width="60" height="60">
+												<img src="http://www.ipcap2016.org/images/iconEng.png" width="60" height="60">
 											</span>
 
 											<div class="info-box-content">
@@ -32,7 +32,7 @@
 													<div class="progress-bar" style="width: 100%"></div>
 												</div>
 												<span class="progress-description">
-													Speed typing test in English
+													Speed Typing Test In English
 												</span>
 											</div>
 											<!-- /.info-box-content -->
@@ -47,7 +47,7 @@
 									<a href="<?php echo site_url("Login/C_login/test_speedTH")?>">
 										<div class="info-box bg-gray disabled color-palette">
 											<span class="info-box-icon">
-												<img src="http://www.huaykaewpalace.com/private_folder/th.png" width="60" height="60">
+												<img src="http://img.freeflagicons.com/thumb/round_icon/thailand/thailand_640.png" width="80" height="60">
 											</span>
 
 											<div class="info-box-content">

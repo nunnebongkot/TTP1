@@ -12,7 +12,7 @@
 				<section class="content">
 					<div class="box box-default">
 						<div class="box-header with-border">
-							<h3 class="box-title">Name game</h3>
+							<h3 class="box-title"></h3>
 						</div>
 						<div class="box-body">
 							<div class="row">
@@ -24,13 +24,13 @@
 													<tr>
 														<td>
 															
-															<div id="sentence" style="font-size:20px"></div>
+															<div id="sentence" style="font-size:18px"></div>
 														</td>
 														
 													</tr>
 													<tr>
 														<td>
-															<input type="text" id="keydata" class="form-control" placeholder="Press Keyspace For Check">
+															<input type="text" id="keydata" class="form-control" placeholder="Press Spacebar For Check Word">
 														</td>
 													</tr>
 													<tr>
@@ -61,14 +61,12 @@
 														<div class="info-box">
 															<span class="info-box-icon bg-red">
 																<i>
-																	<h2><div id="countdown" value="0"> </div><h2>
+																	<h2><div id="countdown" value="0"></div><h2>
 																</i>
 															</span>
-															
 															<span class="info-box-icon bg-gray" id="refresh" onclick="myRefresh()">
 																<i class="fa fa-refresh"></i>
 															</span>
-															</a>
 														</div>
 														<!-- /.info-box -->
 													</div>
@@ -81,10 +79,9 @@
 						</div>
 					</div>
 					<!-- /.box -->
-
 					<div class="box box-default">
 						<div class="box-header with-border">
-							<h3 class="box-title">Competition Ranking</h3>
+							<h3 class="box-title">Competition Ranks</h3>
 						</div>
 						<div class="box-body">
 							<div class="row">
@@ -95,7 +92,7 @@
 											<thead>
 												<tr>
 													<th>
-														NO
+														No.
 													</th>
 													<th>
 														Player
@@ -147,7 +144,6 @@
 </html>
 
 <?php $row = $wordset->row_array(); ?>
-
 <script>
 $(document).ready(function(){
 	//var sentence = ["ทดสอบ", "คำ", "พิมพ์", "ไก่", "ออก", "ไข่", "ไม้", "ตี", "พริก","ลำใย", "กางเกง", "กระเป๋า", "รองเท้า", "เสื้อผ้า", "สบาย", "ดี", "ตากลม", "อ่อนแอ", "พักผ่อน", "อากาศ", "สดใส", "ลีลา", "ริมหาด", "พัดลม", "ยิงปืน"];
@@ -258,7 +254,7 @@ $(document).ready(function(){
 
 	//นับถอยหลัง
 	
-	var time = 6;
+	var time = 60;
 
 	var x = setInterval(function() {
 		if(keystroke >= 1) {
@@ -278,18 +274,41 @@ $(document).ready(function(){
 			   	$("#keystroke").html("Keystrokes: " + keystroke);
 			   	$("#correctstroke").html("Correct Keystrokes: " + correct_stroke).css("color", "green");
 				$("#wrongstroke").html("Wrong Keystrokes: " + wrong_stroke).css("color", "red");
+				
+				var url = "/TTP1/index.php/login/c_login/insert_score/";
+				var data = { 
+					sc_wpm: correct_word, 
+					sc_cword: correct_word, 
+					sc_wword: wrong_word, 
+					sc_keystroke: keystroke, 
+					sc_ckeystroke: correct_stroke,
+					sc_wkeystroke: wrong_stroke,
+					sc_ii_id: 1, // id get from session
+					sc_pf_id: <?php echo $this->session->userdata("pf_id"); ?>,
+					sc_cpt_id: <?php echo $row['cpt_id']; ?>
+					
+				};
+				console.log(data);
 
+
+				$.ajax({
+				  type: "GET",
+				  url: url,
+				  data: data,
+				  //success: success,
+				  dataType: "json"
+				});
 			}
 		}
 	}, 1000);
 
-	
 
 });
 
 function myRefresh() {
 	    location.reload();
 }
+
 
 </script>
 
