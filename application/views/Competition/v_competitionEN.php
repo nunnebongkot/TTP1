@@ -23,9 +23,7 @@
 												<tbody>
 													<tr>
 														<td>
-															<?php $row = $wordset->row_array(); ?>
-															<?php //print_r($row); ?>
-															<?php //echo $row['cpt_wordset']; ?>
+															
 															<div id="sentence" style="font-size:20px"></div>
 														</td>
 														
@@ -94,29 +92,34 @@
 								<div class="col-md-8">
 									<div class="box-body no-padding">
 										<table class="table table-striped">
+											<thead>
+												<tr>
+													<th>
+														NO
+													</th>
+													<th>
+														Player
+													</th>
+													<th>
+														<center>WPM</center>
+													</th>
+												</tr>
+											</thead>
 											<tbody>
-												<tr>
-													<th>
-														No.
-													</th>
-													<th>
-														Username
-													</th>
-													<th>
-														WPM
-													</th>
-												</tr>
-												<tr>
-													<td>
-														1
-													</td>
-													<td>
-														qwerty
-													</td>
-													<td>
-														000
-													</td>
-												</tr>
+												<?php $index = 1; ?>
+												<?php foreach($rank->result() as $row) { ?>
+													<tr>
+														<td>
+															<?php echo $index++; ?>
+														</td>
+														<td>
+															<?php echo $row->pf_fistname." ".$row->pf_lastname; ?>
+														</td>
+														<td>
+															<center><?php echo $row->sc_wpm; ?></center>
+														</td>
+													</tr>
+												<?php } ?>
 											</tbody>
 										</table>
 									</div>
@@ -142,6 +145,8 @@
 		</footer>
 	</div>
 </html>
+
+<?php $row = $wordset->row_array(); ?>
 
 <script>
 $(document).ready(function(){

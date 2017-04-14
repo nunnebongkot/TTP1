@@ -35,8 +35,15 @@
 															<button type="button" class="btn btn-warning">Join</button>
 														</a>
 													</button></center></td>
-													<td><center><?php echo $row->cpt_language; ?></center></td>
-													<td><center>xxx</center></td>
+													<td><center>
+													<?php 
+														if($row->cpt_language==0){
+															echo '<img src="http://www.funtasy.info/images/800px-english-language-iconsvg.png" width="45" height="30" title="English">';
+														}else{
+															echo '<img src="https://cdn.countryflags.com/thumbs/thailand/flag-400.png" width="45" height="30" title="ภาษาไทย">';
+														}
+													?></center></td>
+													<td><center><?php echo $row->par; ?></center></td>
 													<td><center><?php echo $row->cpt_count; ?></center></td>
 												</tr>
 											<?php } ?>

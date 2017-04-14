@@ -23,9 +23,7 @@
 												<tbody>
 													<tr>
 														<td>
-															<?php $row = $wordset->row_array(); ?>
-															<?php //print_r($row); ?>
-															<?php //echo $row['cpt_wordset']; ?>
+															
 															<div id="sentence" style="font-size:18px"></div>
 														</td>
 														
@@ -91,7 +89,7 @@
 								<div class="col-md-8">
 									<div class="box-body no-padding">
 										<table class="table table-striped">
-											<tbody>
+											<thead>
 												<tr>
 													<th>
 														ลำดับ
@@ -100,20 +98,25 @@
 														ชื่อผู้เล่น
 													</th>
 													<th>
-														WPM
+														<center>WPM</center>
 													</th>
 												</tr>
-												<tr>
-													<td>
-														ลำดับ
-													</td>
-													<td>
-														ผู้เล่น
-													</td>
-													<td>
-														จำนวนคำที่พิมพ์ต่อนาที
-													</td>
-												</tr>
+											</thead>
+											<tbody>
+												<?php $index = 1; ?>
+												<?php foreach($rank->result() as $row) { ?>
+													<tr>
+														<td>
+															<?php echo $index++; ?>
+														</td>
+														<td>
+															<?php echo $row->pf_fistname." ".$row->pf_lastname; ?>
+														</td>
+														<td>
+															<center><?php echo $row->sc_wpm; ?></center>
+														</td>
+													</tr>
+												<?php } ?>
 											</tbody>
 										</table>
 									</div>
@@ -140,6 +143,7 @@
 	</div>
 </html>
 
+<?php $row = $wordset->row_array(); ?>
 <script>
 $(document).ready(function(){
 	//var sentence = ["ทดสอบ", "คำ", "พิมพ์", "ไก่", "ออก", "ไข่", "ไม้", "ตี", "พริก","ลำใย", "กางเกง", "กระเป๋า", "รองเท้า", "เสื้อผ้า", "สบาย", "ดี", "ตากลม", "อ่อนแอ", "พักผ่อน", "อากาศ", "สดใส", "ลีลา", "ริมหาด", "พัดลม", "ยิงปืน"];
@@ -278,8 +282,11 @@ $(document).ready(function(){
 					sc_wword: wrong_word, 
 					sc_keystroke: keystroke, 
 					sc_ckeystroke: correct_stroke,
-					sc_pc_id: 1, // id get from session 
-					sc_wkeystroke: wrong_stroke
+					sc_wkeystroke: wrong_stroke,
+					sc_ii_id: 1, // id get from session
+					sc_pf_id: <?php echo $this->session->userdata("pf_id"); ?>,
+					sc_cpt_id: <?php echo $row['cpt_id']; ?>
+					
 				};
 				console.log(data);
 

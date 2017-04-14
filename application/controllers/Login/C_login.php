@@ -330,6 +330,15 @@ class C_login extends CI_Controller {
 		$wordset = $this->wordset;
 		//$data['wordset'] = $this->wordset->get_wordsetTH();
 		// echo "test";
+
+		$wordset->count_competition($cpt_id);
+		$kai = $wordset->check_logcom($this->session->userdata("pf_id"), $cpt_id);
+		if($kai==0){
+			$wordset->insert_logcom($this->session->userdata("pf_id"), $cpt_id);
+		}
+
+		$data['rank'] = $wordset->get_rank($cpt_id);
+
 		$this->pf_id = $this->session->userdata("pf_id");
 		$row = $wordset->get_profile_by_id()->row_array();
 		$data['pf_id'] = $row['pf_id'];
@@ -386,7 +395,10 @@ class C_login extends CI_Controller {
 		$this->sc_ckeystroke = $this->input->get('sc_ckeystroke');
 		$this->sc_wkeystroke = $this->input->get('sc_wkeystroke');
 		
-		$this->sc_pc_id = $this->input->get('sc_pc_id');
+		$this->sc_ii_id = $this->input->get('sc_ii_id');
+		
+		$this->sc_pf_id = $this->input->get('sc_pf_id');
+		$this->sc_cpt_id = $this->input->get('sc_cpt_id');
 		
 		$ok->insert_score();
 		redirect('Login/C_login/test_kai');
