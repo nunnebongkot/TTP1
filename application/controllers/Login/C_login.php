@@ -514,10 +514,10 @@ class C_login extends CI_Controller {
 		$this->load->view('Competition/v_admin_insert');
 		$this->load->view('Template/footerMain');
 	}
-<<<<<<< HEAD
 
 
-=======
+
+
 	
 	public function get_sricpt()
 	{
@@ -526,5 +526,5 @@ class C_login extends CI_Controller {
 		$this->load->view('Tutorial//v_test1');
 		$this->load->view('Template/footerMain');
 	}
->>>>>>> origin/master
+
 }
