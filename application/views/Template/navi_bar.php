@@ -65,7 +65,7 @@
 		</div>
 		<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="<?php echo site_url("Login/C_login/Lesson_system");?>">Tutorial Typing</a></li>
+				<li><a href="<?php echo site_url("Login/C_login/Lesson_system")?>">Tutorial Typing</a></li>
 				<li><a href="<?php echo site_url("Login/C_login/main_speed")?>">Typing Test</a></li>
 				<li><a href="<?php echo site_url("Login/C_login/main_competition")?>">Competition</a></li>
 			</ul>
