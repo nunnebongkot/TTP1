@@ -94,7 +94,7 @@
       </section>
 
 	  <center>
-		<div> ความเร็ว 0 ต่อ/นาที ความถูกต้อง 100% เวลาที่ใช้ 4 นาที 21 วินาที </div>
+		<div> ความเร็ว  <span id="wpm"></span>  ต่อ/นาที ความถูกต้อง <span id="correct"></span>% เวลาที่ใช้ <span id="minute" ></span> นาที  </div>
 	  </center>
 	 
 		<br/> <br/>
@@ -345,6 +345,10 @@
 
 <script>
 $(document).ready(function(){
+	
+	var startTime = new Date();		
+	var correctWord = 0;
+	var wrongWord = 0;
 	var sentence = ["<?php echo str_replace(' ', '","', $row['tt_wordset']); ?>"];
 	var sentence_show = '';
 	var count = 0;
@@ -379,6 +383,7 @@ $(document).ready(function(){
 		
 		if(key_stroke == 1){
 			$("#key-"+keys_check(word[0][0])).css("background-color", "");
+			startTime = new Date();
 		}
 	   	if(e.keyCode == 32){
 	       // user has pressed space
@@ -387,6 +392,7 @@ $(document).ready(function(){
 			
 			if(ans.split(' ').join('') === sentence[count]){
 				$("#sentence_" + count).css("background-color", "green");
+				correctWord++;
 				count++;
 					if(word.length == count){
 						alert("Nice");
@@ -405,10 +411,25 @@ $(document).ready(function(){
 							  //success: success,
 							  dataType: "json"
 							});
+							
+							console.log("ms since the start: " + (new Date() - startTime));
+							var minute = (((new Date() - startTime) / 1000) / 60).toFixed(2);
+							console.log(minute);
+							var wpm = (sentence.length / minute).toFixed(2);
+							var correct = ((correctWord * 100) / (wrongWord + correctWord));
+							
+							$("#wpm").html(wpm);
+							$("#minute").html(minute);
+							$("#correct").html(correct);
+							
+							console.log("wrongWord:" + wrongWord + "correctWord:" + correctWord);
+							
 					}
 				word_count = 0;
 				sentence_count++;
+				
 			}else{
+				wrongWord++;
 				word_count = 0;
 				$("#sentence_" + count).css("background-color", "red");
 			}
@@ -508,7 +529,9 @@ function keys_check(character){
 }
 
 
-
+	
+	
+	
 </script>
 
 
