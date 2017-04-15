@@ -45,6 +45,8 @@
 				document.getElementById('pro_pic_fb').src = response.picture.data.url;
 				document.getElementById('pro_name_fb').innerHTML = response.name;
 				
+				console.log(response.picture.data.url);
+				
 				// document.getElementById('login').style.visibility = 'hidden';
 				// document.getElementById('status').innerHTML = "<p><input type='text' name='name' value="+response.name+"></p>";
 				// document.getElementById('btn').innerHTML = "<p><button onclick='login()' id='login'>Facebook</button></p>";

@@ -421,7 +421,7 @@ class C_login extends CI_Controller {
 		//redirect('Login/C_login/Lesson_system');
 	}
 	
-	public function test($lg_id=NULL, $lg_pf_id=NULL, $lg_tt_id=NULL)
+	public function test($lg_id=NULL, $lg_pf_id=NULL, $lg_tt_id=NULL) //.Use sometimes
 	{
 		$this->load->model('M_login', 'login');
 		$lg = $this->login;
@@ -450,6 +450,14 @@ class C_login extends CI_Controller {
 		$this->load->view('Template/headerMain');
 		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Admin/v_main_admin');
+		$this->load->view('Template/footerMain');
+	}
+	
+	public function get_sricpt()
+	{
+		$this->load->view('Template/headerMain');
+		//$this->load->view('Template/navi_bar', $data);
+		$this->load->view('Tutorial//v_test1');
 		$this->load->view('Template/footerMain');
 	}
 }
