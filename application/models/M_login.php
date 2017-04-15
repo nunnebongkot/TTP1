@@ -62,6 +62,8 @@ class M_login extends CI_model {
 				VALUE(?, ?, ?, ?, ?, ?, ?)";
 		$this->db->query($sql, array($this->pf_fbId_gmId, $this->pf_username, $this->pf_password, $this->pf_fistname, $this->pf_lastname, $this->pf_email, $this->pf_bio));
 	}
+	
+
 	public function get_wordsetEN()	//หน้าแรก
 	{
 		$sql = "SELECT * FROM tpt_competition WHERE cpt_language=0 ORDER BY RAND() LIMIT 1";
@@ -127,10 +129,9 @@ class M_login extends CI_model {
 		$query = $this->db->query($sql);
 		return $query->row_array()["kai"];
 	}
-
 	public function get_rank($cpt_id=NULL)
 	{
-		$sql = "SELECT * FROM tpt_score INNER JOIN tpt_profile ON tpt_score.sc_pf_id = tpt_profile.pf_id WHERE tpt_score.sc_cpt_id=".$cpt_id." GROUP BY tpt_score.sc_pf_id ORDER BY sc_wpm DESC, sc_wword ASC, sc_wkeystroke ASC LIMIT 10";
+		$sql = "SELECT * FROM tpt_score INNER JOIN tpt_profile ON tpt_score.sc_pf_id = tpt_profile.pf_id WHERE tpt_score.sc_cpt_id=".$cpt_id." GROUP BY tpt_score.sc_pf_id ORDER BY sc_wpm DESC,sc_cword DESC, sc_wword ASC, sc_wkeystroke ASC LIMIT 10";
 		$query = $this->db->query($sql);
 		return $query;
 	}
@@ -147,6 +148,23 @@ class M_login extends CI_model {
 		$sql = "SELECT COUNT(*) AS getlog FROM tpt_log WHERE lg_pf_id=".$lg_pf_id." && lg_tt_id=".$lg_tt_id;
 		$query = $this->db->query($sql);
 		return $query->row_array()["getlog"];
+	}
+
+	public function admin_manage()
+	{
+		$sql = "SELECT * FROM tpt_competition ORDER BY cpt_id";
+		$query = $this->db->query($sql);
+		return $query;
+		//$query = $this->db->get('tpt_profile');
+        //return $query->result();
+	}
+	public function select_profile($pf_id=NULL)
+	{
+		$sql = "SELECT * FROM tpt_profile WHERE pf_id=".$pf_id;
+		$query = $this->db->query($sql);
+		return $query;
+		//$query = $this->db->get('tpt_profile');
+        //return $query->result();
 	}
 	
 }

@@ -37,6 +37,15 @@ class C_login extends CI_Controller {
 		$data['id'] = $row['pf_fbId_gmId'];
 		$data['pf_fistname'] = $row['pf_fistname'];
 		$data['pf_lastname'] = $row['pf_lastname'];
+
+		$admin = $lg->select_profile($this->session->userdata("pf_id"))->row_array();
+		
+		//echo $admin['pf_status'];
+
+		if($admin['pf_status']==1)
+		{ 
+			redirect('Login/C_login/Admin/');
+		}
 		
 		$this->load->view('Template/headerMain');
 		$this->load->view('Template/navi_bar', $data);
@@ -446,10 +455,65 @@ class C_login extends CI_Controller {
 		$data['id'] = $row['pf_fbId_gmId'];
 		$data['pf_fistname'] = $row['pf_fistname'];
 		$data['pf_lastname'] = $row['pf_lastname'];
+
+		$admin = $lg->select_profile($this->session->userdata("pf_id"))->row_array();
 		
+		//echo $admin['pf_status'];
+
+		if($admin['pf_status']==0)
+		{ 
+			redirect('Login/C_login/Main_system/'.$admin['pf_id']);
+		}
+		
+
 		$this->load->view('Template/headerMain');
-		$this->load->view('Template/navi_bar', $data);
-		$this->load->view('Admin/v_main_admin');
+		$this->load->view('Template/navi_admin', $data);
+		$this->load->view('Admin/v_admin_main');
 		$this->load->view('Template/footerMain');
 	}
+
+	public function admin_manage()
+	{
+		
+		$this->load->model('M_login', 'com');
+		$com = $this->com;
+	
+		// echo "test";
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $com->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+		
+		$data['com'] = $this->com->admin_manage();
+
+		// echo "test";
+		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_admin', $data);
+		$this->load->view('Admin/v_admin_manage', $data);
+		$this->load->view('Template/footerMain');
+	}
+	public function admin_insert()
+	{
+		$this->load->model('M_login', 'com');
+		$com = $this->com;
+	
+		// echo "test";
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $com->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+
+		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_admin', $data);
+		$this->load->view('Competition/v_admin_insert');
+		$this->load->view('Template/footerMain');
+	}
+
+
 }
