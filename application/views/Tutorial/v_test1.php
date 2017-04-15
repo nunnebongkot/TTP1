@@ -75,9 +75,11 @@
 		console.log('Welcome!  Fetching your information.... ');
 		FB.api('/me', function(response) {
 		  console.log(response);
-		  console.log('Successful login for: ' + response.name + response.picture);
+		  console.log('Successful login for: ' + response.name);
+		  console.log('Successful login for: ' + response.id);
+		  var im = document.getElementById("profileImage").setAttribute("src", "http://graph.facebook.com/" + response.id + "/picture?type=normal");
 		  document.getElementById('status').innerHTML =
-			'Thanks for logging in, ' + response.name + '!';
+			'Thanks for logging in, ' + response.name + ' ' + response.id;
 		});
 	  }
 	</script>
@@ -93,6 +95,7 @@
 
 <div id="status">
 </div>
+<img src="" id="profileImage"/>
 
 
 </body>
