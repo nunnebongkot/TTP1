@@ -1,14 +1,3 @@
-<style> 
-
-# {
-    white-space: nowrap; 
-    width: 12em; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    border: 1px solid #000000;
-}
-
-</style>
 <html>
 	<div class="wrapper">
 		
@@ -66,14 +55,15 @@
 												</td>
 											    <td><?php echo $row->cpt_wordset; ?></td>
 											    <td><center>
-											    	<a class="btn btn-social-icon btn-facebook">
+											    	<a href="<?php echo site_url('/Login/C_login/admin_update/').$row->cpt_id."/";?>"  alt="" class="btn btn-social-icon btn-facebook" id ='opener1' onclick="set_value('	<?php echo $row->cpt_id; ?>','<?php echo $row->cpt_title; ?>','<?php echo $row->cpt_wordset; ?>','<?php echo $row->cpt_language; ?>');">
 														<i class="fa fa-edit"></i>
-													</a></center></td>
+													</a></center>
+												</td>
 											    <td><center>
-													<a class="btn btn-social-icon btn-google">
+													<a href="<?php echo site_url('/Login/C_login/admin_delete/').$row->cpt_id."/";?>" class="btn btn-social-icon btn-google">
 														<i class="fa fa-close"></i>
-													</a></center></td>
-											    </center></td>
+													</a></center>
+												</td>
 											</tr>
 											<?php } ?>
 										</tbody>
@@ -99,5 +89,76 @@
 		<!-- /.container -->
 		</footer>
 	</div>
-</html>
 
+
+	<div id="dialog1" class="da-panel-content" title="Edit Competition" style="padding: 0px">
+		<?php 
+		$data['class'] = "da-form";
+		echo form_open('Login/C_login/admin_update', $data); 
+		?>
+			<!-- text input -->
+            <div class="form-group">
+            	<label>Title</label>
+            	<input type="text" class="form-control" id="cpt_title" name="cpt_title" placeholder="Enter ...">
+            </div>
+            <!-- textarea -->
+            <div class="form-group">
+            	<label>Word</label>
+            	<textarea class="form-control" id="cpt_wordset" name="cpt_wordset" rows="5" placeholder="Enter ..."></textarea>
+            </div>
+
+            <!-- select -->
+            <div class="form-group">
+            	<label>Language</label>
+            	<select class="form-control" id="cpt_laguage" name="cpt_language">
+                    <option value="0">English</option>
+                    <option value="1">ภาษาไทย</option>
+            	</select>
+            </div>
+
+			<div class="form-group">
+            	<input type="submit" value="Submit">
+          	<?php
+			echo form_close();
+			?>        
+            </div>
+
+			
+		</form>
+	</div> 
+
+</html>
+<script>
+	//---------- DIALOG CODE
+    $(function() 
+		{
+		  
+			$( "#dialog1" ).dialog(
+				{
+					autoOpen: false,
+					resizable: false,
+					width: 600,
+					modal: true
+				}
+			);
+	   
+			$( "#opener" ).click(
+				function() 
+				{
+					$( "#dialog1" ).dialog( "open" );
+				}
+			);
+		}
+	);
+
+    //----------- set value on click to input
+    function set_value(cpt_id, cpt_title, cpt_wordset, cpt_language){
+        $( "#cpt_id" ).val(cpt_id); 										//set value to input by id
+        $( "#cpt_title" ).val(cpt_title); 
+        $( "#cpt_wordset" ).val(cpt_wordset); 
+        $( "#cpt_language" ).val(cpt_language);									//set value to input by id
+        $( "#dialog1" ).dialog( "open" ); 								//open dialog
+    }
+	
+	
+</script>

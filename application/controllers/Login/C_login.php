@@ -511,10 +511,61 @@ class C_login extends CI_Controller {
 
 		$this->load->view('Template/headerMain');
 		$this->load->view('Template/navi_admin', $data);
-		$this->load->view('Competition/v_admin_insert');
+		$this->load->view('Admin/v_admin_insert');
 		$this->load->view('Template/footerMain');
 	}
+	public function admin_com()
+	{
+		$this->load->model('M_login', 'com');
 
+		// echo "test";
+		$data['cpt_title'] = $this->input->post('cpt_title');
+		$data['cpt_wordset'] = $this->input->post('cpt_wordset'); 
+		$data['cpt_language'] = $this->input->post('cpt_language');
+
+		//echo $this->input->post('cpt_title');
+		//echo $this->input->post('cpt_wordset');
+		//echo $this->input->post('cpt_language');
+
+		$this->com->insert_competition($data);
+		redirect('Login/C_login/admin_manage');
+	}
+	public function admin_update($cpt_id=NULL, $cpt_title=NULL, $cpt_wordset=NULL, $cpt_language=NULL)
+	{
+		$this->load->model('M_login', 'com');
+
+		// echo "test";
+		//$cpt_id = $this->input->post('cpt_id');
+		$data['cpt_title'] = $this->input->post('cpt_title');
+		$data['cpt_wordset'] = $this->input->post('cpt_wordset'); 
+		$data['cpt_language'] = $this->input->post('cpt_language');
+
+
+		//echo $this->input->post('cpt_title');
+		//echo $this->input->post('cpt_wordset');
+		//echo $this->input->post('cpt_language');
+		$data['com'] = $this->com->admin_update($data);
+		//$this->com->admin_update($data);
+		redirect('Login/C_login/admin_manage');
+	}
+	public function admin_delete($cpt_id=NULL)
+	{
+		$this->load->model('M_login', 'com');
+		//$com = $this->com;
+
+		$data['cpt_id'] = $cpt_id;
+		//$cpt_id = $this->input->post('cpt_id');
+
+		//$check = $com->admin_delete();
+		//$row = $check->row_array();
+		//$cpt_id = $row['cpt_id'];
+		//$row = $com->admin_delete()->row_array();
+		//$data['cpt_id'] = $row['cpt_id'];
+		//$data['com'] = $this->com->admin_delete();
+		//$com->admin_delete($cpt_id)->row_array();
+		$this->com->admin_delete($cpt_id);
+		redirect('Login/C_login/admin_manage');
+	}
 
 
 

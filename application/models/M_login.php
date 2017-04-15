@@ -166,5 +166,19 @@ class M_login extends CI_model {
 		//$query = $this->db->get('tpt_profile');
         //return $query->result();
 	}
+	public function admin_update($cpt_id=NULL, $cpt_title=NULL, $cpt_wordset=NULL, $cpt_language=NULL)
+	{
+		$sql = "UPDATE tpt_competition SET cpt_title=".$cpt_title.", cpt_wordset=".$cpt_wordset.", cpt_language=".$cpt_language." WHERE cpt_id=".$cpt_id." ";
+		$this->db->query($sql, array($this->cpt_id, $this->cpt_title, $this->cpt_wordset , $this->cpt_language));
+
+		//$query = $this->db->query($sql);
+		//return $query;
+	}
+	public function admin_delete($cpt_id=NULL)
+	{
+		$sql = "DELETE FROM tpt_competition WHERE cpt_id=".$cpt_id." ";
+		$query = $this->db->query($sql);
+		return $query;
+	}
 	
 }
