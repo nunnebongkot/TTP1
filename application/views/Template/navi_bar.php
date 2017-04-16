@@ -126,11 +126,21 @@
 		  console.log('Successful login for: ' + response.name);
 		  console.log('Successful login for: ' + response.id);
 		  //var im = document.getElementByClassName("profileImage").setAttribute("src", "http://graph.facebook.com/" + response.id + "/picture?type=normal");
-		  $(".profileImage").attr("src", "http://graph.facebook.com/" + response.id + "/picture?type=normal");
-		  $(".namefb").html(response.name);
-		  document.getElementById('namefb').innerHTML = response.name;
+		//  $(".profileImage").attr("src", "http://graph.facebook.com/" + response.id + "/picture?type=normal");
+		//  $(".namefb").html(response.name);
+		 // document.getElementById('namefb').innerHTML = response.name;
 		});
 	  }
+	  
+	   function facebookLogout(){
+
+			FB.logout(function(response) {
+			   
+			});
+   
+		}
+	  
+	  
 </script>
 <div class="wrapper">
 
@@ -159,16 +169,15 @@
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- The user image in the navbar-->
-                <img src="" class="user-image profileImage" alt="User Image">
+                <img src="<?php echo $this->session->userdata("profileImage"); ?>" class="user-image profileImage" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-				<span class="hidden-xs" id="namefb"><?php if($id==NULL || $id == 0){echo $pf_fistname." ".$pf_lastname;}?></span>
+				<span class="hidden-xs" id="namefb"><?php echo $this->session->userdata("pf_fistname")." ".$this->session->userdata("pf_lastname"); ?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
                 <li class="user-header">
-                  <img src="" class="img-circle profileImage" alt="User Image">
-						<p class="namefb"><?php if($id==NULL || $id == 0){echo $pf_fistname." ".$pf_lastname;}?>
-						<small>Member</small>	
+                  <img src="<?php echo $this->session->userdata("profileImage"); ?>" class="img-circle profileImage" alt="User Image">
+						<p class="namefb"><?php echo $this->session->userdata("pf_fistname")." ".$this->session->userdata("pf_lastname"); ?> 
 						</p>
                 </li>
                 <!-- Menu Footer-->

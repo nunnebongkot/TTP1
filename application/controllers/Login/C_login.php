@@ -11,17 +11,21 @@ class C_login extends CI_Controller {
 	}
 	public function index()	//หน้าแรก
 	{
+		session_unset();
+
+
 		$this->load->view('Template/header');
 		$this->load->view('Login/v_index');
 		$this->load->view('Template/footer');
 	}
 	public function login_system()
 	{
+		
 		$this->load->view('Template/header2');
 		$this->load->view('Login/v_login');
 		$this->load->view('Template/footer2');
 	}
-	public function Main_system($id=NULL)
+	public function Main_system($id=NULL, $fname=NULL, $lname=NULL, $profileImage=NULL)
 	{
 		// echo $id;die;
 	
@@ -37,7 +41,13 @@ class C_login extends CI_Controller {
 		$data['id'] = $row['pf_fbId_gmId'];
 		$data['pf_fistname'] = $row['pf_fistname'];
 		$data['pf_lastname'] = $row['pf_lastname'];
+		$data['pf_profileImage'] = $row['pf_profileImage'];
 		
+		$this->pf_fistname = $fname;
+		$this->pf_lastname = $lname;
+		$this->pf_profileImage = $profileImage;
+
+		 
 		$this->load->view('Template/headerMain');
 		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Login/v_main_user', $data);
@@ -55,6 +65,16 @@ class C_login extends CI_Controller {
 		$check = $lg->get_login();
 		$row = $check->row_array();
 		$pf_id = $row['pf_id'];
+		
+		$this->session->set_userdata("pf_fistname", $row['pf_fistname']);
+		$this->session->set_userdata("pf_lastname", $row['pf_lastname']);
+		$this->session->set_userdata("profileImage", $row['pf_profileImage']);
+		
+		echo $this->session->userdata("pf_fistname"); 
+		echo $this->session->userdata("pf_lastname"); 
+		echo $this->session->userdata("profileImage"); 
+		
+		
 		if($check->num_rows()==0){
 			redirect('Login/C_login/login_system');
 		}else{
@@ -87,6 +107,7 @@ class C_login extends CI_Controller {
 		$data['id'] = $id;
 		$data['fname'] = $fname;
 		$data['lname'] = $lname;
+
 		$this->load->view('Template/header2');
 		$this->load->view('Login/v_register',$data);
 		$this->load->view('Template/footer2');

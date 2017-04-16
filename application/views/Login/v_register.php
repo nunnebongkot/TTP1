@@ -41,8 +41,9 @@
 								<?php
 								}else{
 								?>
-									<input type="text" placeholder="<?php echo $fname; ?>" class="form-firstname form-control" id="form-firstname" disabled>
-									<input type="hidden"  name="pf_fistname" value="<?php echo $fname; ?>" />
+									
+									<input type="text" placeholder="<?php echo $pf_fistname; ?>" class="form-firstname form-control" id="form-firstname" disabled>
+									<input type="hidden"  name="pf_fistname" value="<?php echo $pf_fistname;?>;" />
 								<?php
 								}
 								?>
@@ -56,8 +57,8 @@
 								<?php
 								}else{
 								?>
-									<input type="text" placeholder="<?php echo $lname; ?>" class="form-lastname form-control" disabled>
-									<input type="hidden" name="pf_lastname" value="<?php echo $lname; ?>" />
+									<input type="text" placeholder="<?php echo $pf_lastname; ?>" class="form-lastname form-control" disabled>
+									<input type="hidden" name="pf_lastname" value="<?php echo $pf_lastname; ?>" />
 								<?php
 								}
 								?>
