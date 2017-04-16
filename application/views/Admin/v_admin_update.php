@@ -20,7 +20,7 @@
 								<div class="col-md-6">
 									<?php
 										//$data['form'] = "insert_com";
-										echo form_open("Login/C_login/admin_com");
+										echo form_open("Login/C_login/insert_com");
 									?>
 					                <!-- text input -->
 						                <div class="form-group">

@@ -28,7 +28,7 @@
               <div class="icon">
                 <i class="ion ion-ios-gear"></i>
               </div>
-              <a href="<?php echo site_url("Login/C_login/Lesson_system")?>" class="small-box-footer">
+              <a href="<?php echo site_url("Login/C_login/admin_manage")?>" class="small-box-footer">
                 Start Now <i class="fa fa-arrow-circle-right"></i>
               </a>
             </div>

@@ -41,7 +41,19 @@ class C_login extends CI_Controller {
 		$data['id'] = $row['pf_fbId_gmId'];
 		$data['pf_fistname'] = $row['pf_fistname'];
 		$data['pf_lastname'] = $row['pf_lastname'];
+<<<<<<< HEAD
 		$data['pf_profileImage'] = $row['pf_profileImage'];
+=======
+
+		$admin = $lg->select_profile($this->session->userdata("pf_id"))->row_array();
+		
+		//echo $admin['pf_status'];
+
+		if($admin['pf_status']==1)
+		{ 
+			redirect('Login/C_login/Admin/');
+		}
+>>>>>>> origin/master
 		
 		$this->pf_fistname = $fname;
 		$this->pf_lastname = $lname;
@@ -361,6 +373,7 @@ class C_login extends CI_Controller {
 		}
 
 		$data['rank'] = $wordset->get_rank($cpt_id);
+		
 
 		$this->pf_id = $this->session->userdata("pf_id");
 		$row = $wordset->get_profile_by_id()->row_array();
@@ -372,6 +385,7 @@ class C_login extends CI_Controller {
 		
 		
 		$data['wordset'] = $this->wordset->get_wordset($cpt_id, $cpt_language);
+		//$wordset->update_rank($sc_id);
 		//$data['wordset'] = $this->com->get_competition();
 		// echo "test";
 		$this->load->view('Template/headerMain');
@@ -469,12 +483,120 @@ class C_login extends CI_Controller {
 		$data['id'] = $row['pf_fbId_gmId'];
 		$data['pf_fistname'] = $row['pf_fistname'];
 		$data['pf_lastname'] = $row['pf_lastname'];
+
+		$admin = $lg->select_profile($this->session->userdata("pf_id"))->row_array();
 		
+		//echo $admin['pf_status'];
+
+		if($admin['pf_status']==0)
+		{ 
+			redirect('Login/C_login/Main_system/'.$admin['pf_id']);
+		}
+		
+
 		$this->load->view('Template/headerMain');
-		$this->load->view('Template/navi_bar', $data);
-		$this->load->view('Admin/v_main_admin');
+		$this->load->view('Template/navi_admin', $data);
+		$this->load->view('Admin/v_admin_main');
 		$this->load->view('Template/footerMain');
 	}
+
+	public function admin_manage()
+	{
+		
+		$this->load->model('M_login', 'com');
+		$com = $this->com;
+	
+		// echo "test";
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $com->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+		
+		$data['com'] = $this->com->admin_manage();
+
+		// echo "test";
+		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_admin', $data);
+		$this->load->view('Admin/v_admin_manage', $data);
+		$this->load->view('Template/footerMain');
+	}
+	public function admin_insert()
+	{
+		$this->load->model('M_login', 'com');
+		$com = $this->com;
+	
+		// echo "test";
+		
+		$this->pf_id = $this->session->userdata("pf_id");
+		$row = $com->get_profile_by_id()->row_array();
+		$data['pf_id'] = $row['pf_id'];
+		$data['id'] = $row['pf_fbId_gmId'];
+		$data['pf_fistname'] = $row['pf_fistname'];
+		$data['pf_lastname'] = $row['pf_lastname'];
+
+		$this->load->view('Template/headerMain');
+		$this->load->view('Template/navi_admin', $data);
+		$this->load->view('Admin/v_admin_insert');
+		$this->load->view('Template/footerMain');
+	}
+	public function admin_com()
+	{
+		$this->load->model('M_login', 'com');
+
+		// echo "test";
+		$data['cpt_title'] = $this->input->post('cpt_title');
+		$data['cpt_wordset'] = $this->input->post('cpt_wordset'); 
+		$data['cpt_language'] = $this->input->post('cpt_language');
+
+		//echo $this->input->post('cpt_title');
+		//echo $this->input->post('cpt_wordset');
+		//echo $this->input->post('cpt_language');
+
+		$this->com->insert_competition($data);
+		redirect('Login/C_login/admin_manage');
+	}
+	public function admin_update($cpt_id=NULL, $cpt_title=NULL, $cpt_wordset=NULL, $cpt_language=NULL)
+	{
+		$this->load->model('M_login', 'com');
+
+		// echo "test";
+		//$cpt_id = $this->input->post('cpt_id');
+		$data['cpt_title'] = $this->input->post('cpt_title');
+		$data['cpt_wordset'] = $this->input->post('cpt_wordset'); 
+		$data['cpt_language'] = $this->input->post('cpt_language');
+
+
+		//echo $this->input->post('cpt_title');
+		//echo $this->input->post('cpt_wordset');
+		//echo $this->input->post('cpt_language');
+		$data['com'] = $this->com->admin_update($data);
+		//$this->com->admin_update($data);
+		redirect('Login/C_login/admin_manage');
+	}
+	public function admin_delete($cpt_id=NULL)
+	{
+		$this->load->model('M_login', 'com');
+		//$com = $this->com;
+
+		$data['cpt_id'] = $cpt_id;
+		//$cpt_id = $this->input->post('cpt_id');
+
+		//$check = $com->admin_delete();
+		//$row = $check->row_array();
+		//$cpt_id = $row['cpt_id'];
+		//$row = $com->admin_delete()->row_array();
+		//$data['cpt_id'] = $row['cpt_id'];
+		//$data['com'] = $this->com->admin_delete();
+		//$com->admin_delete($cpt_id)->row_array();
+		$this->com->admin_delete($cpt_id);
+		redirect('Login/C_login/admin_manage');
+	}
+
+
+
 	
 	public function get_sricpt()
 	{
@@ -483,4 +605,5 @@ class C_login extends CI_Controller {
 		$this->load->view('Tutorial//v_test1');
 		$this->load->view('Template/footerMain');
 	}
+
 }
