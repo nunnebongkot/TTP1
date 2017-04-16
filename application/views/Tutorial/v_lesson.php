@@ -23,7 +23,8 @@
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
                 <div class="panel box box-primary">
                   <div class="box-header with-border">
-                    <h4 class="box-title">
+                    <div class="box-footer no-padding">
+					
 					<?php $complete = 0;?>
 					<?php foreach($lesson->result() as $key=>$item) {?>
 			
@@ -33,17 +34,19 @@
 										<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/0">
 								<?php }
 								//}?>
-                        <?php echo "บทที่่ ".$item->tt_id." แป้น ".$item->tt_lesson;?>
+                        <?php echo "Lesson&nbsp;&nbsp;".$item->tt_id."&nbsp;&nbsp;&nbsp;".$item->tt_lesson;?>
 						<?php if($item->lg_id != NULL){ ?>
 							<?php $complete++; ?>
-							<?php echo "comพลีส"; ?>
+							<span class="pull-right badge bg-green">Complete</span>
 						<?php } ?>
 						<BR>
                       </a>
+					  
 					<?php }}?>
-				
-                    </h4>
-                  </div>
+					
+					<!--</h4>-->
+					</div>
+				  </div>
                   <!--<div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                     <div class="box-body">
                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
@@ -67,7 +70,7 @@
 		<div class="col-md-6">
           <div class="box box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">Choose Your Lesson For Thai</h3>
+              <h3 class="box-title">เลือกบทเรียนภาษาไทย</h3>
             </div>
           <!-- /.box-header -->
             <div class="box-body">
@@ -75,7 +78,8 @@
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
                 <div class="panel box box-primary">
                   <div class="box-header with-border">
-                    <h4 class="box-title">
+                    <div class="box-footer no-padding">
+					
 					
 					<?php $completeEn = 0;?>
 					<?php $index = 0;?>
@@ -87,10 +91,10 @@
 										<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
 								<?php }
 								//}?>
-                        <?php echo "บทที่่ ".$item->tt_id." แป้น ".$item->tt_lesson;?>
+                        <?php echo "บทที่่&nbsp;&nbsp;".$item->tt_id."&nbsp;&nbsp;&nbsp;".$item->tt_lesson;?>
 						<?php if($item->lg_id != NULL){ ?>
 							<?php $completeEn++; ?>
-							<?php echo "comพลีส"; ?>
+							<?php //echo "comพลีส"; ?> <span class="pull-right badge bg-green">ผ่าน</span>
 						<?php } ?>
 						<?php $index++; ?>
 						<BR>
@@ -98,7 +102,7 @@
 					<?php }}?>
 				
 				
-                    </h4>
+                    </div>
                   </div>
                   <!--<div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                     <div class="box-body">

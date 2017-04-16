@@ -1,4 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>template/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>template/sweetalert/dist/sweetalert.css">
 <style>
 ::selection{background-color:none; color:inherit;}
 
@@ -98,25 +100,29 @@
 	  </center>
 	 
 		<br/> <br/>
-	<center>
-		<?php $row = $wordset->row_array(); ?>
-		<?php //echo $row['tt_wordset']; ?>
-		<div id="sentence" ></div>
-	</center>
-	<!--<input type="text" id="keydata" />-->
-		<div id="check"> </div>
-
-		<br/> <br/>
-		<div id="checkTrue"></div>
-	
-
+		<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div class="box box-default" >
+					<div width="30" height="35" >
+						<?php $row = $wordset->row_array(); ?>
+							<center>
+								<div id="sentence"></div>
+							</center>
+								<div id="check"></div>
+								<br/>
+								<div id="checkTrue"></div>
+					</div>
+				  <!-- /.box-body -->
+				</div>
+			</div>
+		
 		<center>
-			<textarea id="keydata" rows="2" cols="98"></textarea>
-		</center>	
+		  <textarea id="keydata" rows="2" cols="112"></textarea>
+		</center>
+	<!--<input type="text" id="keydata" />-->
 		
 		<div class="cable">
 		</div>
-
 
 		<div class="keyboard">
 		  <div class="section-a">
@@ -340,7 +346,13 @@
 			  </div>
 		  </div><!-- end section-a-->
 		</div>
+        
+			<!--<a align = "center" href="#" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>-->
+		
+       
 	</div>
+	
+   
 </div>
 
 <script>
@@ -395,7 +407,8 @@ $(document).ready(function(){
 				correctWord++;
 				count++;
 					if(word.length == count){
-						alert("Nice");
+						//alert("Nice");
+						swal("Good job!", "You clicked the button!", "success")
 							var url = "/TTP1/index.php/login/c_login/insert_log/";
 							var data = { 
 							
