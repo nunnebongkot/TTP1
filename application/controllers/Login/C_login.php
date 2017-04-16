@@ -347,6 +347,7 @@ class C_login extends CI_Controller {
 		}
 
 		$data['rank'] = $wordset->get_rank($cpt_id);
+		
 
 		$this->pf_id = $this->session->userdata("pf_id");
 		$row = $wordset->get_profile_by_id()->row_array();
@@ -358,6 +359,7 @@ class C_login extends CI_Controller {
 		
 		
 		$data['wordset'] = $this->wordset->get_wordset($cpt_id, $cpt_language);
+		//$wordset->update_rank($sc_id);
 		//$data['wordset'] = $this->com->get_competition();
 		// echo "test";
 		$this->load->view('Template/headerMain');

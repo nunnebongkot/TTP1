@@ -64,7 +64,7 @@ class M_login extends CI_model {
 	}
 	
 
-	public function get_wordsetEN()	//หน้าแรก
+	public function get_wordsetEN()	
 	{
 		$sql = "SELECT * FROM tpt_competition WHERE cpt_language=0 ORDER BY RAND() LIMIT 1";
 		$query = $this->db->query($sql);
@@ -72,7 +72,7 @@ class M_login extends CI_model {
 		//$query = $this->db->get('tpt_profile');
         //return $query->result();
 	}
-	public function get_wordsetTH()	//หน้าแรก
+	public function get_wordsetTH()
 	{
 		$sql = "SELECT * FROM tpt_competition WHERE cpt_language=1 ORDER BY RAND() LIMIT 1";
 		$query = $this->db->query($sql);
@@ -131,10 +131,18 @@ class M_login extends CI_model {
 	}
 	public function get_rank($cpt_id=NULL)
 	{
-		$sql = "SELECT * FROM tpt_score INNER JOIN tpt_profile ON tpt_score.sc_pf_id = tpt_profile.pf_id WHERE tpt_score.sc_cpt_id=".$cpt_id." GROUP BY tpt_score.sc_pf_id ORDER BY sc_wpm DESC,sc_cword DESC, sc_wword ASC, sc_wkeystroke ASC LIMIT 10";
+		//$sql = "SELECT * FROM tpt_score WHERE EXISTS (SELECT pf_id FROM tpt_profile WHERE tpt_score.sc_pf_id = tpt_profile.pf_id HAVING MAX(tpt_score.sc_wpm) tpt_score.sc_cpt_id=".$cpt_id.") ORDER BY sc_wpm DESC,sc_cword DESC, sc_wword ASC, sc_wkeystroke ASC LIMIT 10";
+		$sql = "SELECT * FROM tpt_score INNER JOIN tpt_profile ON tpt_score.sc_pf_id = tpt_profile.pf_id WHERE tpt_score.sc_cpt_id=".$cpt_id." GROUP BY pf_id, sc_cpt_id ORDER BY sc_wpm DESC,sc_cword DESC, sc_wword ASC, sc_wkeystroke ASC LIMIT 10";
 		$query = $this->db->query($sql);
 		return $query;
 	}
+
+	/*public function update_rank($sc_id=NULL)
+	{
+		$sql = "UPDATE tpt_score SET sc_wpm=".$sc_wpm." WHERE tpt_score.sc_id=".$sc_id;
+		$query = $this->db->query($sql);
+		return $query;
+	}*/
 
 	
 	public function insert_log(){
