@@ -98,6 +98,7 @@ class C_login extends CI_Controller {
 		$lg = $this->login;
 		
 		$this->pf_fbId_gmId = $this->input->post('pf_fbId_gmId');
+		$this->pf_profileImage = "http://graph.facebook.com/" . $this->pf_fbId_gmId . "/picture?type=normal";
 		$this->pf_fistname = $this->input->post('pf_fistname');
 		$this->pf_lastname = $this->input->post('pf_lastname');
 		if($this->input->post('pf_username') != NULL){
@@ -127,6 +128,7 @@ class C_login extends CI_Controller {
 		$data['id'] = $row['pf_fbId_gmId'];
 		$data['pf_fistname'] = $row['pf_fistname'];
 		$data['pf_lastname'] = $row['pf_lastname'];
+		$data['pf_profileImage'] = $row['pf_profileImage'];
 		$data['pf_email'] = $row['pf_email'];
 		$data['pf_bio'] = $row['pf_bio'];
 		

@@ -58,9 +58,9 @@ class M_login extends CI_model {
 	}
 	public function insert_regis()	//หน้าแรก
 	{
-		$sql = "INSERT INTO tpt_profile(pf_fbId_gmId, pf_username, pf_password, pf_fistname, pf_lastname, pf_email, pf_bio)
-				VALUE(?, ?, ?, ?, ?, ?, ?)";
-		$this->db->query($sql, array($this->pf_fbId_gmId, $this->pf_username, $this->pf_password, $this->pf_fistname, $this->pf_lastname, $this->pf_email, $this->pf_bio));
+		$sql = "INSERT INTO tpt_profile(pf_fbId_gmId, pf_username, pf_password, pf_fistname, pf_lastname, pf_email, pf_bio , pf_profileImage)
+				VALUE(?, ?, ?, ?, ?, ?, ?, ?)";
+		$this->db->query($sql, array($this->pf_fbId_gmId, $this->pf_username, $this->pf_password, $this->pf_fistname, $this->pf_lastname, $this->pf_email, $this->pf_bio, $this->pf_profileImage));
 	}
 	public function get_wordsetEN()	//หน้าแรก
 	{

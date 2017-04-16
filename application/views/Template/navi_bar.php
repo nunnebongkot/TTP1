@@ -1,6 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script>
-	window.fbAsyncInit = function() {
+	/*window.fbAsyncInit = function() {
 		FB.init({
 		  appId      : '414984515515624',
 		  xfbml      : true,
@@ -52,7 +52,85 @@
 				// document.getElementById('btn').innerHTML = "<p><button onclick='login()' id='login'>Facebook</button></p>";
 			});
 		}
-	}
+	}*/
+	
+	  // This is called with the results from from FB.getLoginStatus().
+	  function statusChangeCallback(response) {
+		console.log('statusChangeCallback');
+		console.log(response);
+		// The response object is returned with a status field that lets the
+		// app know the current login status of the person.
+		// Full docs on the response object can be found in the documentation
+		// for FB.getLoginStatus().
+		if (response.status === 'connected') {
+		  // Logged into your app and Facebook.
+		  testAPI();
+		} else {
+		  // The person is not logged into your app or we are unable to tell.
+		  document.getElementById('status').innerHTML = 'Please log ' +
+			'into this app.';
+		}
+	  }
+
+	  // This function is called when someone finishes with the Login
+	  // Button.  See the onlogin handler attached to it in the sample
+	  // code below.
+	  function checkLoginState() {
+		FB.getLoginStatus(function(response) {
+		  statusChangeCallback(response);
+		});
+	  }
+
+	  window.fbAsyncInit = function() {
+	  FB.init({
+		appId      : '414984515515624',
+		cookie     : true,  // enable cookies to allow the server to access 
+							// the session
+		xfbml      : true,  // parse social plugins on this page
+		version    : 'v2.8' // use graph api version 2.8
+	  });
+
+	  // Now that we've initialized the JavaScript SDK, we call 
+	  // FB.getLoginStatus().  This function gets the state of the
+	  // person visiting this page and can return one of three states to
+	  // the callback you provide.  They can be:
+	  //
+	  // 1. Logged into your app ('connected')
+	  // 2. Logged into Facebook, but not your app ('not_authorized')
+	  // 3. Not logged into Facebook and can't tell if they are logged into
+	  //    your app or not.
+	  //
+	  // These three cases are handled in the callback function.
+
+	  FB.getLoginStatus(function(response) {
+		statusChangeCallback(response);
+	  });
+
+	  };
+
+	  // Load the SDK asynchronously
+	  (function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));
+
+	  // Here we run a very simple test of the Graph API after login is
+	  // successful.  See statusChangeCallback() for when this call is made.
+	  function testAPI() {
+		console.log('Welcome!  Fetching your information.... ');
+		FB.api('/me', function(response) {
+		  console.log(response);
+		  console.log('Successful login for: ' + response.name);
+		  console.log('Successful login for: ' + response.id);
+		  //var im = document.getElementByClassName("profileImage").setAttribute("src", "http://graph.facebook.com/" + response.id + "/picture?type=normal");
+		  $(".profileImage").attr("src", "http://graph.facebook.com/" + response.id + "/picture?type=normal");
+		  $(".namefb").html(response.name);
+		  document.getElementById('namefb').innerHTML = response.name;
+		});
+	  }
 </script>
 <div class="wrapper">
 
@@ -81,16 +159,16 @@
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- The user image in the navbar-->
-                <img id ="picture_fb" src="<?php echo base_url(); ?>template/adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <img src="" class="user-image profileImage" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-				<span class="hidden-xs" id="name_fb"><?php if($id==NULL || $id == 0){echo $pf_fistname." ".$pf_lastname;}?></span>
+				<span class="hidden-xs" id="namefb"><?php if($id==NULL || $id == 0){echo $pf_fistname." ".$pf_lastname;}?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
                 <li class="user-header">
-                  <img id ="picture_fb1" src="<?php echo base_url(); ?>template/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-						<p id="name_fb"><?php if($id==NULL || $id == 0){echo $pf_fistname." ".$pf_lastname;}?>
-						<small>Member</small>
+                  <img src="" class="img-circle profileImage" alt="User Image">
+						<p class="namefb"><?php if($id==NULL || $id == 0){echo $pf_fistname." ".$pf_lastname;}?>
+						<small>Member</small>	
 						</p>
                 </li>
                 <!-- Menu Footer-->
