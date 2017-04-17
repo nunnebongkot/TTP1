@@ -41,9 +41,9 @@ class C_login extends CI_Controller {
 		$data['id'] = $row['pf_fbId_gmId'];
 		$data['pf_fistname'] = $row['pf_fistname'];
 		$data['pf_lastname'] = $row['pf_lastname'];
-<<<<<<< HEAD
+
 		$data['pf_profileImage'] = $row['pf_profileImage'];
-=======
+
 
 		$admin = $lg->select_profile($this->session->userdata("pf_id"))->row_array();
 		
@@ -53,8 +53,7 @@ class C_login extends CI_Controller {
 		{ 
 			redirect('Login/C_login/Admin/');
 		}
->>>>>>> origin/master
-		
+
 		$this->pf_fistname = $fname;
 		$this->pf_lastname = $lname;
 		$this->pf_profileImage = $profileImage;
