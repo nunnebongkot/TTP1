@@ -56,6 +56,44 @@
 			});
 		}
 </script>
+<html lang="en">
+  <head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1023508659894-abue3djqd9u78pc673a5lvd8ofjknjel.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </head>
+ 
+    <!--<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
+	<!--<a href="#" onclick="signOut();">Sign out</a>-->
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+		var url = "<?php echo site_url();?>/login/c_login/check_login_google/"+profile.getId()+"/"+profile.getGivenName()+"/"+profile.getFamilyName();
+		//console.log(url);
+		window.location.href = url;
+
+      };
+   
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+  
+</html>
        
 	   <!-- Top content -->
         <div class="top-content">
@@ -105,23 +143,15 @@
                         <div class="col-sm-6 col-sm-offset-3 social-login">
                         	<h3>...or login with:</h3>
                         	<div class="social-login-buttons" >
-							<!--<button onclick="getInfo()">Get Info</button>-->
-							<!--<div id="status">-->
-									
-									<!--<button onclick="login()" id="login">Facebook</button>-->
-	                        	<!--<a class="btn btn-link-1 btn-link-1-facebook" onclick="login()" id="login">-->
 	                        	<div class="btn btn-link-1 btn-link-1-facebook" onclick="login()">
 	                        		<i class="fa fa-facebook"></i> Facebook
 	                        	</div>
-	                        	<a class="btn btn-link-1 btn-link-1-google-plus" onClick="signInClick()" id="gConnect">
+	                        	<div class="btn btn-link-3  g-signin2"  data-onsuccess="onSignIn" data-theme="dark">
 	                        		<i class="fa fa-google-plus"></i> Google Plus
-	                        	</a>
-								
-								<div id="status"></div>
-							<!--</div>-->
-                        </div>
-                    </div>
-                </div>
+	                        	</div>
+							</div>
+						</div>
+					</div>
                 </div>
             </div>
             

@@ -142,6 +142,45 @@
 	  
 	  
 </script>
+<html lang="en">
+  <head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1023508659894-abue3djqd9u78pc673a5lvd8ofjknjel.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </head>
+  
+    <!--<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
+	<!--<a href="#" onclick="signOut();">Sign out</a>-->
+<script>
+		window.onload = function(e){ 
+			var auth2 = gapi.auth2.getAuthInstance();
+				auth2.signOut().then(function () {
+				console.log('User signed out.');
+			});
+		}
+		
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      };
+    
+  function signOut() {
+  //window.location = "https://mail.google.com/mail/u/0/?logout&hl=en";
+    document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost/TTP1/index.php/Login/C_login/";
+  }
+</script>
+ 
+</html>
 <div class="wrapper">
 
   <header class="main-header">
@@ -186,7 +225,7 @@
                     <a href="<?php echo site_url('/Login/c_login/profile/').$pf_id;?>" class="btn btn-default btn-flat">Profile</a>
                   </div>
                   <div class="pull-right">
-                    <a href="<?php echo site_url();?>/Login/c_login" class="btn btn-default btn-flat">Sign out</a>
+                    <a onclick="signOut()" class="btn btn-default btn-flat" >Sign out</a>
                   </div>
                 </li>
               </ul>

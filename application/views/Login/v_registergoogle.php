@@ -20,7 +20,7 @@
                     <div class="form-bottom">
 					<?php
 						$data['form'] = "login-form";
-						echo form_open("Login/C_login/insert_regis",$data);
+						echo form_open("Login/C_login/insert_regis_google",$data);
 					?>
 						<input type="hidden" name="pf_fbId_gmId" value="<?php echo $id; ?>" />
 						

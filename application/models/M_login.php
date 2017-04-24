@@ -42,7 +42,7 @@ class M_login extends CI_model {
 
 	public function get_lesson()
 	{
-		$sql = "SELECT * FROM tpt_tutorial LEFT JOIN tpt_log ON tpt_log.lg_tt_id = tpt_tutorial.tt_id GROUP BY tt_id;";
+		$sql = "SELECT * FROM tpt_tutorial LEFT JOIN tpt_log ON tpt_log.lg_tt_id = tpt_tutorial.tt_id GROUP BY tt_id" ;
 		$query = $this->db->query($sql);
 		return $query;
 	}

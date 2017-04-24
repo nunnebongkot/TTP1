@@ -110,7 +110,30 @@ class C_login extends CI_Controller {
 			redirect('Login/C_login/Main_system/'.$pf_id);
 		}
 	}
-	public function register($id=NULL,$fname=NULL,$lname=NULL)
+	
+	public function check_login_google($id=NULL,$fname=NULL,$lname=NULL)
+	{
+		$this->load->model('M_login', 'login');
+		$lg = $this->login;
+		
+
+		//$this->pf_fbId_gmId = $this->input->post('pf_fbId_gmId');
+		 
+		$this->id_fbId_gmId = $id;
+		//die;
+		$check = $lg->get_login_fb_gm();
+		$row = $check->row_array();
+		$pf_id = $row['pf_id'];
+		//echo $check->num_rows();die;
+		
+		if($check->num_rows()==0){
+			redirect('Login/C_login/register_google/'.$id.'/'.$fname.'/'.$lname);
+		}else{
+			$row = $check->row_array();
+			redirect('Login/C_login/Main_system/'.$pf_id);
+		}
+	}
+	public function register($id=NULL,$fname=NULL,$lname=NULL,$Img=NULL)
 	{
 		$this->load->model('M_login', 'login');
 		$lg = $this->login;
@@ -118,9 +141,26 @@ class C_login extends CI_Controller {
 		$data['id'] = $id;
 		$data['fname'] = $fname;
 		$data['lname'] = $lname;
+		$data['Img'] = $Img;
 
 		$this->load->view('Template/header2');
 		$this->load->view('Login/v_register',$data);
+		$this->load->view('Template/footer2');
+		
+	}
+	
+	public function register_google($id=NULL,$fname=NULL,$lname=NULL,$Img=NULL)
+	{
+		$this->load->model('M_login', 'login');
+		$lg = $this->login;
+		
+		$data['id'] = $id;
+		$data['fname'] = $fname;
+		$data['lname'] = $lname;
+		$data['Img'] = $Img;
+
+		$this->load->view('Template/header2');
+		$this->load->view('Login/v_registergoogle',$data);
 		$this->load->view('Template/footer2');
 		
 	}
@@ -148,6 +188,40 @@ class C_login extends CI_Controller {
 		$lg->insert_regis();
 		redirect('Login/C_login/login_system');
 	}
+	
+	public function insert_regis_google()
+	{
+		$this->load->model('M_login', 'login');
+		$lg = $this->login;
+		
+		
+		$this->pf_fbId_gmId = $this->input->post('pf_fbId_gmId');
+		
+		$url = "http://picasaweb.google.com/data/entry/api/user/". $this->pf_fbId_gmId ."?alt=json";
+		
+        $json = file_get_contents($url);
+		$d = json_decode($json);
+		//echo $d->{'entry'}->{'gphoto$thumbnail'}->{'$t'};
+		//die;
+		$this->pf_profileImage = $d->{'entry'}->{'gphoto$thumbnail'}->{'$t'};
+		$this->pf_fistname = $this->input->post('pf_fistname');
+		$this->pf_lastname = $this->input->post('pf_lastname');
+		if($this->input->post('pf_username') != NULL){
+			$this->pf_username = $this->input->post('pf_username');
+		}else{
+			$this->pf_username = "";
+		}
+		if($this->input->post('pf_password') != NULL){
+			$this->pf_password = $this->input->post('pf_password');
+		}else{
+			$this->pf_password = "";
+		}
+		$this->pf_email = $this->input->post('pf_email');
+		$this->pf_bio = $this->input->post('pf_bio');
+		$lg->insert_regis();
+		redirect('Login/C_login/login_system');
+	}
+	
 	public function profile($id)
 	{
 		$this->load->model('M_login', 'login');
@@ -624,16 +698,23 @@ class C_login extends CI_Controller {
 		$this->com->admin_delete($cpt_id);
 		redirect('Login/C_login/admin_manage');
 	}
-
-
-
 	
-	public function get_sricpt()
+	public function get_sricpt() //Test
 	{
 		$this->load->view('Template/headerMain');
 		//$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Tutorial//v_test1');
 		$this->load->view('Template/footerMain');
 	}
+	
+	public function test_google() //Test
+	{
+		$this->load->view('Template/headerMain');
+		//$this->load->view('Template/navi_bar', $data);
+		$this->load->view('Login/v_google1');
+		$this->load->view('Template/footerMain');
+	}
+	
+	
 
 }
