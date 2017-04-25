@@ -302,6 +302,9 @@ $(document).ready(function(){
 		}
 	}, 1000);
 
+	$('#keydata').bind("cut copy paste", function(e) {
+		e.preventDefault();
+	});
 
 });
 
