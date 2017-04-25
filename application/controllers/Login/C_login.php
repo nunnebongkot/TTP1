@@ -286,6 +286,11 @@ class C_login extends CI_Controller {
 
 		
 		$data['lesson'] = $lg->get_lesson();
+		$data['complete_check'] = $lg->select_log($this->session->userdata("pf_id"));
+		//print_r($data["complete"]);
+		//echo $data["complete"]->num_rows();
+		//echo $this->session->userdata("pf_id");
+		//die;
 		$this->load->view('Template/headerMain');
 		$this->load->view('Template/navi_bar', $data);
 		$this->load->view('Tutorial/v_lesson', $data);

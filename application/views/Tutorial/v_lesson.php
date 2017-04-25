@@ -25,23 +25,36 @@
                   <div class="box-header with-border">
                     <div class="box-footer no-padding">
 					
-					<?php $complete = 0;?>
+						
+					<?php $completeEn = 0;?>
+					<?php $indexth = 0;?>
 					<?php foreach($lesson->result() as $key=>$item) {?>
 			
 						<?php if($item->tt_language=='0'){ ?>
-								<?php //if($key > 0){ ?>
-									<?php if($key == $complete) { ?>
+							<?php if($indexth == 0) { ?>
+								<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/0">
+								<?php $indexth++; ?>
+							<?php }?>
+							
+							<?php foreach($complete_check->result() as $key_link => $row){ ?>
+								<?php if($item->tt_id == $row->lg_tt_id && $key_link != 0) { ?>
+									<?php $indexth++; ?>
+									<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/0">
+								<?php } ?>
+
+									<?php if($indexth + 10 == $key) { ?>	
 										<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/0">
-								<?php }
-								//}?>
-                        <?php echo "Lesson&nbsp;&nbsp;".$item->tt_id."&nbsp;&nbsp;&nbsp;".$item->tt_lesson;?>
-						<?php if($item->lg_id != NULL){ ?>
-							<?php $complete++; ?>
-							<span class="pull-right badge bg-green">Complete</span>
-						<?php } ?>
-						<BR>
-                      </a>
-					  
+									<?php } ?>
+								<?php } ?>
+								<?php echo "บทที่่&nbsp;&nbsp;".$item->tt_id."&nbsp;&nbsp;&nbsp;".$item->tt_lesson;?>
+								<?php foreach($complete_check->result() as $row){ ?>
+									<?php if($item->tt_id == $row->lg_tt_id) { ?>
+										<?php $completeEn++; ?>
+										<?php //echo "comพลีส"; ?> <span class="pull-right badge bg-green">ผ่าน</span>
+									<?php } ?>
+								<?php } ?>
+							<BR>
+						  </a>
 					<?php }}?>
 					
 					<!--</h4>-->
@@ -86,19 +99,30 @@
 					<?php foreach($lesson->result() as $key=>$item) {?>
 			
 						<?php if($item->tt_language=='1'){ ?>
-								<?php //if($key > 0){ ?>
-									<?php if($index == $completeEn) { ?>
+							<?php if($index == 0) { ?>
+								<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
+								<?php $index++; ?>
+							<?php }?>
+							
+							<?php foreach($complete_check->result() as $key_link => $row){ ?>
+								<?php if($item->tt_id == $row->lg_tt_id && $key_link != 0) { ?>
+									<?php $index++; ?>
+									<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
+								<?php } ?>
+
+									<?php if($index + 10 == $key) { ?>	
 										<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
-								<?php }
-								//}?>
-                        <?php echo "บทที่่&nbsp;&nbsp;".$item->tt_id."&nbsp;&nbsp;&nbsp;".$item->tt_lesson;?>
-						<?php if($item->lg_id != NULL){ ?>
-							<?php $completeEn++; ?>
-							<?php //echo "comพลีส"; ?> <span class="pull-right badge bg-green">ผ่าน</span>
-						<?php } ?>
-						<?php $index++; ?>
-						<BR>
-                      </a>
+									<?php } ?>
+								<?php } ?>
+								<?php echo "บทที่่&nbsp;&nbsp;".$item->tt_id."&nbsp;&nbsp;&nbsp;".$item->tt_lesson;?>
+								<?php foreach($complete_check->result() as $row){ ?>
+									<?php if($item->tt_id == $row->lg_tt_id) { ?>
+										<?php $completeEn++; ?>
+										<?php //echo "comพลีส"; ?> <span class="pull-right badge bg-green">ผ่าน</span>
+									<?php } ?>
+								<?php } ?>
+							<BR>
+						  </a>
 					<?php }}?>
 				
 				

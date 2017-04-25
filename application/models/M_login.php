@@ -42,10 +42,18 @@ class M_login extends CI_model {
 
 	public function get_lesson()
 	{
-		$sql = "SELECT * FROM tpt_tutorial LEFT JOIN tpt_log ON tpt_log.lg_tt_id = tpt_tutorial.tt_id GROUP BY tt_id" ;
+		$sql = "SELECT * FROM tpt_tutorial" ;
 		$query = $this->db->query($sql);
 		return $query;
 	}
+	
+	public function select_log($profile=NULL)
+	{
+		$sql = "SELECT * FROM tpt_log WHERE lg_pf_id=".$profile;
+		$query = $this->db->query($sql);
+		return $query;
+	}
+	
 	
 	public function get_profile()	//หน้าแรก
 	{
