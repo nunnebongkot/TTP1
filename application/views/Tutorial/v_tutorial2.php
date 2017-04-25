@@ -541,7 +541,11 @@ function keys_check(character){
 	}
 }
 
-
+$(document).ready(function(){
+  $('#keydata').bind("cut copy paste",function(e) {
+      e.preventDefault();
+  });
+});
 	
 	
 	
