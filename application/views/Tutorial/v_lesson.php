@@ -41,8 +41,9 @@
 									<?php $indexth++; ?>
 									<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/0">
 								<?php } ?>
-
-									<?php if($indexth + 10 == $key) { ?>	
+									
+									<?php //echo $indexth . "==" . $key; ?>
+									<?php if($indexth == $key) { ?>	
 										<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/0">
 									<?php } ?>
 								<?php } ?>
@@ -97,7 +98,7 @@
 					<?php $completeEn = 0;?>
 					<?php $index = 0;?>
 					<?php foreach($lesson->result() as $key=>$item) {?>
-			
+					<?php //echo $index; ?>
 						<?php if($item->tt_language=='1'){ ?>
 							<?php if($index == 0) { ?>
 								<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
@@ -109,8 +110,8 @@
 									<?php $index++; ?>
 									<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
 								<?php } ?>
-
-									<?php if($index + 10 == $key) { ?>	
+									<?php //echo $index + 10 . "==" . $key; ?>
+									<?php if($index + 9 == $key) { ?>	
 										<a href="<?php echo site_url('/login/C_login/Tutorial_system/').$item->tt_id;?>/1">
 									<?php } ?>
 								<?php } ?>
@@ -123,7 +124,8 @@
 								<?php } ?>
 							<BR>
 						  </a>
-					<?php }}?>
+						<?php } ?>
+					<?php } ?>
 				
 				
                     </div>
