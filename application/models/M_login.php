@@ -133,7 +133,7 @@ class M_login extends CI_model {
 	}
 	public function check_logcom($lc_pf_id=NULL, $lc_cpt_id=NULL)
 	{
-		$sql = "SELECT COUNT(*) AS kai FROM logcom WHERE lc_pf_id=".$lc_pf_id." && lc_cpt_id=".$lc_cpt_id;
+		$sql = "SELECT COUNT(*) AS kai FROM logcom WHERE lc_pf_id=".$lc_pf_id." AND lc_cpt_id=".$lc_cpt_id;
 		$query = $this->db->query($sql);
 		return $query->row_array()["kai"];
 	}
